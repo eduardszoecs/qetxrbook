@@ -1,6 +1,8 @@
 # Summary
 This is the summary of my book.
 
+* [Preface](preface/intro.md)
+
 * [Introduction to R](rintro/intro.md)
     * [Getting help](rintro/help.md)
     * [Basic data structures & functions](rintro/basic.md)
