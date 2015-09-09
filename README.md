@@ -2,7 +2,7 @@
 #### by Eduard Szöcs, University of Koblenz-Landau
 
 * **Website**: http://edild.github.io/qetxrbook/
-* **gitbook**: https://www.gitbook.com/book/edild/qetxrbook/details
+* **gitbook**: https://www.gitbook.com/book/edild/qetxrbook
 * **Repository**: https://github.com/EDiLD/qetxrbook
 
 ### Other versions of this book

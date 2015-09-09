@@ -5,3 +5,4 @@ _book/
 log/
 .Rhistory
 
+*.html

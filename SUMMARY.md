@@ -2,6 +2,7 @@
 This is the summary of my book.
 
 * [Preface](preface/intro.md)
+    * [Why use R?](preface/why.md)
 
 * [Introduction to R](rintro/intro.md)
     * [Getting help](rintro/help.md)
