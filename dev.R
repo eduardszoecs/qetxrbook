@@ -9,7 +9,11 @@ checkForGitbook()
 # newGitbook('/home/edisz/Documents/Uni/Projects/qetxrbook')
 # initGitbook()
 
+
 setwd('/home/edisz/Documents/Uni/Projects/qetxrbook')
 buildGitbook()
 openGitbook()
 publishGitbook('EDiLD/qetxrbook')
+
+bib <- read.bibtex('references.bib')
+bib

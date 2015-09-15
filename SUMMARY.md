@@ -29,3 +29,5 @@ This is the summary of my book.
 * [Misc](misc/intro.md)
     * [Retrieving data from the web](misc/webchem.md)
     * [Reproducible Analyses](misc/reproducible.md)
+
+* [References](references.md)
