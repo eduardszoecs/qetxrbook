@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Community Ecotoxicology | Quantitative Ecotoxicology with R</title>
+        <title>Introduction to RStudio | Quantitative Ecotoxicology with R</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.3.0">
@@ -25,10 +25,10 @@
         
     
     
-    <link rel="next" href="../community/diversity.html" />
+    <link rel="next" href="../rintro/help.html" />
     
     
-    <link rel="prev" href="../rintro/help.html" />
+    <link rel="prev" href="../preface/packages.html" />
     
 
         
@@ -36,7 +36,7 @@
     <body>
         
         
-    <div class="book" data-level="5" data-basepath=".." data-revision="Wed Sep 16 2015 10:20:36 GMT+0200 (CEST)">
+    <div class="book" data-level="2.1" data-basepath=".." data-revision="Wed Sep 16 2015 10:20:36 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -140,7 +140,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1" data-path="rintro/rstudio.html">
+        <li class="chapter active" data-level="2.1" data-path="rintro/rstudio.html">
             
                 
                     <a href="../rintro/rstudio.html">
@@ -264,7 +264,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="5" data-path="community/intro.html">
+        <li class="chapter " data-level="5" data-path="community/intro.html">
             
                 
                     <a href="../community/intro.html">
@@ -476,90 +476,21 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h2 id="community-ecotoxicology">Community Ecotoxicology</h2>
-<h3 id="introduction">Introduction</h3>
-<p>In the previous chapters we have dealt with one species at a time.
-However, in nature species occure together with other species and might might interact with each other.
-All the specis and their interactions occuring at one time and space together form a <em>community</em>.</p>
-<p>As ecotoxicologists we might also to test whole communities with their biotic interactions in order to make more realistic assessments.</p>
-<h3 id="the-data-used-in-this-chapter">The data used in this chapter</h3>
-<p>We will analyse the pyrifos data set of (van den
-Brink and ter
-Braak, 1999) 
-which is shipped with the vegan package. 
-This is a classical multivariate dataset as commonly produced in mesocosm experiments.</p>
-<p>Twelve experimental ditches were used in this experiment: 
-Four ditches served as control and the remaining eight were treated in duplicates 
-once with in the insecticide chlorpyrifos at doses of 0.1, 0.9, 6 and 44 ug / L. 
-Invertebrates were sampled 11 times from week -4 pre-treatment through week 24 post-treatment. 
-A total of 178 taxa were identified, this resulted in a table  of 132 rows 
-(11 * 12 samples) and 178 columns (taxa).</p>
-<pre><code class="lang-r"><span class="hljs-keyword">require</span>(vegan)
-data(pyrifos)
-head(pyrifos[, c(<span class="hljs-number">1</span>:<span class="hljs-number">11</span>)])
-</code></pre>
-<pre><code>##        Simve Daplo Cerpu Alogu Aloco Alore Aloaf Copsp Ostsp Slyla Acrha
-## w.4.c1 3.951     0     0     0     0     0     0 2.773 0.000 1.386 0.000
-## w.4.c2 2.303     0     0     0     0     0     0 2.079 0.000 0.000 1.099
-## w.4.c3 4.595     0     0     0     0     0     0 3.761 0.000 0.693 0.000
-## w.4.c4 2.398     0     0     0     0     0     0 3.296 0.693 0.000 0.000
-## w.4.c5 4.025     0     0     0     0     0     0 3.466 0.000 0.000 1.609
-## w.4.c6 2.303     0     0     0     0     0     0 2.197 0.000 0.000 0.693
-</code></pre><p>Rows correspond to samples and columns are the species (with abbreviated names) - a <em>species x sites</em> matrix as commonly used in community ecology.</p>
-<p>The rownames code treatment and time, but we will create a separate data.frame with variables providing information on the experimental ditch, sampling time and treatment: </p>
-<pre><code class="lang-r">week &lt;- gl(<span class="hljs-number">11</span>, <span class="hljs-number">12</span>, labels = c(-<span class="hljs-number">4</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0.1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">8</span>, <span class="hljs-number">12</span>, <span class="hljs-number">15</span>, <span class="hljs-number">19</span>, <span class="hljs-number">24</span>))
-dose &lt;- factor(rep(c(<span class="hljs-number">0.1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.9</span>, <span class="hljs-number">0</span>, <span class="hljs-number">44</span>, <span class="hljs-number">6</span>, <span class="hljs-number">0.1</span>, <span class="hljs-number">44</span>, <span class="hljs-number">0.9</span>, <span class="hljs-number">0</span>, <span class="hljs-number">6</span>), <span class="hljs-number">11</span>))
-ditch &lt;- gl(<span class="hljs-number">12</span>, <span class="hljs-number">1</span>, length=<span class="hljs-number">132</span>)
-env &lt;- data.frame(week, dose, ditch)
-head(env)
-</code></pre>
-<pre><code>##   week dose ditch
-## 1   -4  0.1     1
-## 2   -4    0     2
-## 3   -4    0     3
-## 4   -4  0.9     4
-## 5   -4    0     5
-## 6   -4   44     6
-</code></pre><p>Let&apos;s have a first look at the abundance of some taxa during the experiment.
-The code here is more lengthy and you don&apos;t need to fully understand it.
-The code subsets and prepares the data and then shows a plot with time on x-axis, 
-abundance on y-axis and dose as color for each species.</p>
-<pre><code class="lang-r"><span class="hljs-comment"># subset species</span>
-take &lt;- c(<span class="hljs-string">&apos;binitent&apos;</span>, <span class="hljs-string">&apos;olchaeta&apos;</span>, <span class="hljs-string">&apos;caenhora&apos;</span>, <span class="hljs-string">&apos;cloedipt&apos;</span>, <span class="hljs-string">&apos;chaoobsc&apos;</span>,  <span class="hljs-string">&apos;gammpule&apos;</span>, 
-          <span class="hljs-string">&apos;libellae&apos;</span>,<span class="hljs-string">&apos;agdasphr&apos;</span> )
-abu &lt;- pyrifos[ , names(pyrifos) %<span class="hljs-keyword">in</span>% take]
-names(abu) &lt;- c(<span class="hljs-string">&apos;Oligochaeta&apos;</span>, <span class="hljs-string">&apos;Bithynia tentaculata&apos;</span>, <span class="hljs-string">&apos;Gammarus pulex&apos;</span>, 
-                  <span class="hljs-string">&apos;Caenis horaria&apos;</span>, <span class="hljs-string">&apos;Cloeon dipterum&apos;</span>, <span class="hljs-string">&apos;Libellulidae&apos;</span>, 
-                  <span class="hljs-string">&apos;Chaoborus obscuripes&apos;</span>, <span class="hljs-string">&apos;Agrypnia/Dasystegia/Phryganea&apos;</span>)
-
-<span class="hljs-comment"># data has been ln-transformed - back-transformation to raw abundances</span>
-abu_t &lt;- round((exp(abu) - <span class="hljs-number">1</span>)/<span class="hljs-number">10</span>)
-
-<span class="hljs-comment"># join with enviromental variables and bring to long format,</span>
-<span class="hljs-keyword">require</span>(reshape2)
-dfm &lt;- melt(data.frame(dose, week, abu_t), id.vars = c(<span class="hljs-string">&apos;dose&apos;</span>, <span class="hljs-string">&apos;week&apos;</span>))  
-<span class="hljs-comment"># week should be numeric for plot</span>
-dfm$week &lt;- as.numeric(as.character(dfm$week))
-
-<span class="hljs-comment"># x-axis: week, y-axis: abundances (log-scale), color: doses, splitted by taxon)</span>
-<span class="hljs-keyword">require</span>(ggplot2)
-ggplot(dfm, aes(x = week, y = value + <span class="hljs-number">1</span>, col = dose)) +
-  geom_point() +
-  geom_smooth(aes(group = dose), se = <span class="hljs-literal">FALSE</span>) +
-  facet_wrap(~variable, scales = <span class="hljs-string">&apos;free_y&apos;</span>) +
-  geom_vline(aes_string(xintercept = <span class="hljs-number">0</span>), col = <span class="hljs-string">&quot;red&quot;</span>) +
-  scale_y_log10() +
-  theme_bw() +
-  ylab(<span class="hljs-string">&apos;Abundance + 1&apos;</span>) +
-  xlab(<span class="hljs-string">&apos;Week&apos;</span>)
-</code></pre>
-<p><img src="figure/pyrifos_raw_plot-1.png" alt="plot of chunk pyrifos_raw_plot"> </p>
-<p>From this plot we see that after aplication (red vertical line) the abundance of 
-<em>Caenis horaria</em>, <em>Cloeon dipterum</em> and <em>Chaoborus obscuripes</em> decreases for the highest doses,
-but recovers to the end of experiment.
-Whereas, <em>Gamarus pulex</em> does not recover. 
-<em>Bithynia tentaculata</em> and Oligochaeta seem the provit from treatment.
-Moreover, there are species in very low abundances where we cannot make any inferences (like <em>Libellulidae</em>).</p>
+                        <h2 id="introduction-to-rstudio">Introduction to RStudio</h2>
+<h3 id="the-interface">The interface</h3>
+<p>If you start RStudio you will see a window devided into four <em>panes</em>:</p>
+<p><img src="../figures/rstudio.png" alt="alt text"></p>
+<ul>
+<li><p><strong>The Editor pane:</strong> R programms (scripts) are a collection of functions. In the editor we simply write text files with the function calls we needed for the analysis. These scripts can be saved and rerun whenever needed (see also the chapter on <a href="../misc/reproducible.html">reproducible research</a>). 
+The commands type in the editor are not executed. To send the currently selected line to the <em>console</em> and execute it simply type <code>CTRL + ENTER</code>.</p>
+</li>
+<li><p><strong>The Console pane:</strong> Here you can directly type commands after the <code>&gt;</code> and execute them by hitting <code>ENTER</code>. This is actually R. If you see an <code>+</code> instead, R expects more output to finish and execute the command. This is often the case when you have forgotten a closing bracket. Simply hit <code>ESC</code> to abort the command and return to <code>&gt;</code>.</p>
+</li>
+<li><p><strong>The Environment pane:</strong> Here you can see which objects/value/data R know about. It&apos;s useful, because you can see the name and a summary of the objects. By clicking on them you can view the contents.</p>
+</li>
+<li><p><strong>The Help/Packages/Plot/Files pane:</strong> Here are plots that you produce shown. Moreover, you can search within the help or browse through packages.</p>
+</li>
+</ul>
 
                     
                     </section>
@@ -570,10 +501,10 @@ Moreover, there are species in very low abundances where we cannot make any infe
         </div>
 
         
-        <a href="../rintro/help.html" class="navigation navigation-prev " aria-label="Previous page: Getting help"><i class="fa fa-angle-left"></i></a>
+        <a href="../preface/packages.html" class="navigation navigation-prev " aria-label="Previous page: Install additional packages"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../community/diversity.html" class="navigation navigation-next " aria-label="Next page: Diversity measures"><i class="fa fa-angle-right"></i></a>
+        <a href="../rintro/help.html" class="navigation navigation-next " aria-label="Next page: Getting help"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
