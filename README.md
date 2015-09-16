@@ -18,7 +18,7 @@ There are difference possibilities to contribute to this book:
 1. Fork the repository and send a pull request. 
 2. File an issue at [github](https://github.com/EDiLD/qetxrbook/issues).
 3. Drop me an email.
-4. A donation a [gitbook](https://www.gitbook.com/book/edild/qetxrbook/details).
+4. A donation at [gitbook](https://www.gitbook.com/book/edild/qetxrbook/details).
 5. Spread the word about this book.
 
 

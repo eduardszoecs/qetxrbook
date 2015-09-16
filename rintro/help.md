@@ -1,0 +1,70 @@
+
+
+## Getting help
+
+If you're starting with R you will encounter a lot of `Errors`, `Warnings`, `Messages` and other problems.
+No one can do programming without errors. This chapter is how and where you can get help.
+
+### R-help
+
+R (and every package) comes with a comprehensive set of help files. Every function needs to have an accompanying help file.
+Unfortunately, these help-files are not always easy to read.
+
+You can access the help for every function by preceeding it with a `?`:
+
+
+```r
+?mean
+```
+or by using the search field in the [help pane](../rintro/rstudio.html). This will open this file:
+
+![alt text](../figures/helpfile.png)
+
+These help files always have the same structure (some parts can be missing):
+
+* **Description:** A short description what the function does.
+
+* **Usage:** Here you see all the function arguments.
+
+* **Arguments:** A detailed description of the function arguments.
+
+* **Details:** Usually, mathematical details about the implementation.
+
+* **Value:** What does the function return?
+
+* **Author(s):** Who wrote the function. If you have a question of find a bug you may contact the author.
+
+* **References:** More information about the methods and how to cite them.
+
+* **See Also:** Links to other related functions.
+
+* **Examples:** This is perhabs the most usefull part for a beginner. Here you find examples how the function is used. Copy them into the console and inspect the objects that are passed, what arguments are used and what the output is.
+
+You can also run these examples directly from the terminal with the `?example()` function:
+
+
+```r
+example(mean)
+```
+
+```
+## 
+## mean> x <- c(0:10, 50)
+## 
+## mean> xm <- mean(x)
+## 
+## mean> c(xm, mean(x, trim = 0.10))
+## [1] 8.75 5.50
+```
+
+
+### Help on the internet
+
+
+#### Google
+
+
+#### Stackoverflow
+
+
+

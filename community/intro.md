@@ -2,7 +2,17 @@
 
 ## Community Ecotoxicology
 
-### The data
+### Introduction
+
+In the previous chapters we have dealt with one species at a time.
+However, in nature species occure together with other species and might might interact with each other.
+All the specis and their interactions occuring at one time and space together form a *community*.
+
+As ecotoxicologists we might also to test whole communities with their biotic interactions in order to make more realistic assessments.
+
+
+
+### The data used in this chapter
 We will analyse the pyrifos data set of (van den
 Brink and ter
 Braak, 1999) 

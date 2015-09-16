@@ -7,6 +7,7 @@ This is the summary of my book.
     * [Install additional packages](preface/packages.md)
 
 * [Introduction to R](rintro/intro.md)
+    * [Introduction to RStudio](rintro/rstudio.md)
     * [Getting help](rintro/help.md)
     * [Basic data structures & functions](rintro/basic.md)
     * [Reading data into R](rintro/read_data.md)

@@ -4,6 +4,7 @@
 # Uncomment to list all items in the BibTeX file.
 for(i in names(bib)) { print(i); citep(bib[i]) }
 ```
+
 ```{r bibliography, echo=FALSE, results='asis'}
 bibliography()
 ```
