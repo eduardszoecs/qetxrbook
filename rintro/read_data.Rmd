@@ -14,7 +14,7 @@ Nearly every tool can handle such data.
 
 To read such data into R we use the function `read.table`.
 
-`read.table` has a lot of arguments to control it's fumctionality:
+`read.table` has a lot of arguments to control it's functionality:
 
 ```{r eval = FALSE}
 
@@ -34,10 +34,10 @@ read.table(file, header = FALSE, sep = "", quote = "\"'",
 
 The most useful ones are:
 
-* `file` : character, the path to the file (either absolute or relative to the workign directory [`#! need link here`])
+* `file` : character, the path to the file (either absolute or relative to the working directory [`#! need link here`])
 * `header` : logical (either `TRUE` or `FALSE`). Does the file include column names in the first row?
 * `sep` : columns can be separated in text files by different characters (e.g. `,` or `;` or `|`)
-* `dec` : the decimal separator. Default is `.`, but in some countries (like germany) this can also be `,`
+* `dec` : the decimal separator. Default is `.`, but in some countries (like Germany) this can also be `,`
 * `stringsAsFactors` : Should be strings interpreted as factors? It tend to use `stringsAsFactors = FALSE` (default is `TRUE`) and convert only if needed.
 
 So a typical command to load data would be:
@@ -55,7 +55,7 @@ Writing text files is done via `write.table`. It has a similar set of attributes
 However, to others should be mentioned:
 
 * `append` : If `TRUE` the data is appended to the file. Otherwise, the existing file is overwritten.
-* `row.names` : Is always use `row.names=FALSE`, because rownames should not contain information and the columns are better aligned.
+* `row.names` : Is always use `row.names=FALSE`, because row-names should not contain information and the columns are better aligned.
 
 So to write the above data.frame to a file use:
 
@@ -77,7 +77,7 @@ Luckily, there is now the [`readxl`](https://cran.r-project.org/web/packages/rea
 
 ### Other files
 
-R can also read a lof of other formats (SPSS, GIS-data, ...), however you'll certainly need additional packages. Just [search](../rintro/help.html) for it on the internet.
+R can also read a lot of other formats (SPSS, GIS-data, ...), however you'll certainly need additional packages. Just [search](../rintro/help.html) for it on the internet.
 
 
 

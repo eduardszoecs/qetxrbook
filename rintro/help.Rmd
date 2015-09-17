@@ -14,7 +14,7 @@ No one can do programming without errors. This chapter is how and where you can 
 R (and every package) comes with a comprehensive set of help files. Every function needs to have an accompanying help file.
 Unfortunately, these help-files are not always easy to read.
 
-You can access the help for every function by preceeding it with a `?`:
+You can access the help for every function by preceding it with a `?`:
 
 ```{r rhelp, eval = FALSE}
 ?mean
@@ -41,7 +41,7 @@ These help files always have the same structure (some parts can be missing):
 
 * **See Also:** Links to other related functions.
 
-* **Examples:** This is perhabs the most usefull part for a beginner. Here you find examples how the function is used. Copy them into the console and inspect the objects that are passed, what arguments are used and what the output is.
+* **Examples:** This is perhaps the most useful part for a beginner. Here you find examples how the function is used. Copy them into the console and inspect the objects that are passed, what arguments are used and what the output is.
 
 You can also run these examples directly from the terminal with the `?example()` function:
 
@@ -52,7 +52,7 @@ example(mean)
 
 #### Vignettes
 
-Many package come with (high quality) tutorials/guidess on the package.
+Many package come with (high quality) tutorials/guides on the package.
 
 You can list all available vignettes with 
 ```{r eval=FALSE}
@@ -93,7 +93,7 @@ Follow this to get daily news and tutorials about R.
 
 #### Question & Answer sites
 
-Question & Answer sites, like [StackOverflow](http://stackoverflow.com/) are not only a valueable source of information (there are [more than 100,000 R-questions](http://stackoverflow.com/questions/tagged/r) on StackOverflow), you can also ask specific questions (and hopefully get a really good answer).
+Question & Answer sites, like [StackOverflow](http://stackoverflow.com/) are not only a valuable source of information (there are [more than 100,000 R-questions](http://stackoverflow.com/questions/tagged/r) on StackOverflow), you can also ask specific questions (and hopefully get a really good answer).
 However, when asking a question on the internet you should invest some time and create a `reproducible example`.
 This assists others diagnosing your problem and you get faster and better answers.
 

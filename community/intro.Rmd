@@ -9,8 +9,8 @@ bib <- read.bibtex('/home/edisz/Documents/Uni/Projects/qetxrbook/references.bib'
 ### Introduction
 
 In the previous chapters we have dealt with one species at a time.
-However, in nature species occure together with other species and might might interact with each other.
-All the specis and their interactions occuring at one time and space together form a *community*.
+However, in nature species occur together with other species and might might interact with each other.
+All the species and their interactions occurring at one time and space together form a *community*.
 
 As ecotoxicologists we might also to test whole communities with their biotic interactions in order to make more realistic assessments.
 
@@ -37,7 +37,7 @@ head(pyrifos[, c(1:11)])
 
 Rows correspond to samples and columns are the species (with abbreviated names) - a *species x sites* matrix as commonly used in community ecology.
 
-The rownames code treatment and time, but we will create a separate data.frame with variables providing information on the experimental ditch, sampling time and treatment: 
+The row-names code treatment and time, but we will create a separate data.frame with variables providing information on the experimental ditch, sampling time and treatment: 
 
 
 ```{r envdata}
@@ -86,9 +86,9 @@ ggplot(dfm, aes(x = week, y = value + 1, col = dose)) +
   xlab('Week')
 ```
 
-From this plot we see that after aplication (red vertical line) the abundance of 
+From this plot we see that after application (red vertical line) the abundance of 
 *Caenis horaria*, *Cloeon dipterum* and *Chaoborus obscuripes* decreases for the highest doses,
 but recovers to the end of experiment.
 Whereas, *Gamarus pulex* does not recover. 
-*Bithynia tentaculata* and Oligochaeta seem the provit from treatment.
+*Bithynia tentaculata* and Oligochaeta seem the profit from treatment.
 Moreover, there are species in very low abundances where we cannot make any inferences (like *Libellulidae*).

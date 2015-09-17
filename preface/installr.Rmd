@@ -11,10 +11,10 @@ Download and install following the instructions and keeping all default settings
 
 ## Install RStudio
 
-R is a command line programm. On Linux it looks like this:
+R is a command line program. On Linux it looks like this:
 ![alt text](../figures/rterminal.png)
 
-Luckily, there are some Graphical User Interfacs (GUI) to R. 
+Luckily, there are some Graphical User Interfaces (GUI) to R. 
 If you're on Windows, R is already shipped with one.
 If you click on the R icon you'll see something like this:
 

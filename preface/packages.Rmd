@@ -59,9 +59,6 @@ Or by using the [RStudio interface](../rintro/rstudio.html) (`Update` button in 
 
 1. Update all your packages
 2. Install the following packages (we will need them later on):
+`drc`, `vegan`, `multcomp`
 
-* `drc`
-* `vegan`
-* `multcomp`
-
-(Hint: To save you some typing/copyinf: you can also install multiple packages at once.)
+(Hint: To save you some typing/copying: you can also install multiple packages at once.)
