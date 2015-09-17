@@ -6,7 +6,3 @@ log/
 .Rhistory
 
 *.html
-
-*.md
-!SUMMARY.md
-!README.md
