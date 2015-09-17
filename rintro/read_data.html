@@ -36,7 +36,7 @@
     <body>
         
         
-    <div class="book" data-level="2.4" data-basepath=".." data-revision="Thu Sep 17 2015 10:02:27 GMT+0200 (CEST)">
+    <div class="book" data-level="2.4" data-basepath=".." data-revision="Thu Sep 17 2015 10:24:39 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -496,7 +496,7 @@
 <p>One of the easiest ways to store data is to use text files (or comma separated files <code>.csv</code>). 
 Nearly every tool can handle such data.</p>
 <p>To read such data into R we use the function <code>read.table</code>.</p>
-<p><code>read.table</code> has a lot of arguments to control it&apos;s fumctionality:</p>
+<p><code>read.table</code> has a lot of arguments to control it&apos;s functionality:</p>
 <pre><code class="lang-r">read.table(file, header = <span class="hljs-literal">FALSE</span>, sep = <span class="hljs-string">&quot;&quot;</span>, quote = <span class="hljs-string">&quot;\&quot;&apos;&quot;</span>,
            dec = <span class="hljs-string">&quot;.&quot;</span>, numerals = c(<span class="hljs-string">&quot;allow.loss&quot;</span>, <span class="hljs-string">&quot;warn.loss&quot;</span>, <span class="hljs-string">&quot;no.loss&quot;</span>),
            row.names, col.names, as.is = !stringsAsFactors,
@@ -510,10 +510,10 @@ Nearly every tool can handle such data.</p>
 </code></pre>
 <p>The most useful ones are:</p>
 <ul>
-<li><code>file</code> : character, the path to the file (either absolute or relative to the workign directory [<code>#! need link here</code>])</li>
+<li><code>file</code> : character, the path to the file (either absolute or relative to the working directory [<code>#! need link here</code>])</li>
 <li><code>header</code> : logical (either <code>TRUE</code> or <code>FALSE</code>). Does the file include column names in the first row?</li>
 <li><code>sep</code> : columns can be separated in text files by different characters (e.g. <code>,</code> or <code>;</code> or <code>|</code>)</li>
-<li><code>dec</code> : the decimal separator. Default is <code>.</code>, but in some countries (like germany) this can also be <code>,</code></li>
+<li><code>dec</code> : the decimal separator. Default is <code>.</code>, but in some countries (like Germany) this can also be <code>,</code></li>
 <li><code>stringsAsFactors</code> : Should be strings interpreted as factors? It tend to use <code>stringsAsFactors = FALSE</code> (default is <code>TRUE</code>) and convert only if needed.</li>
 </ul>
 <p>So a typical command to load data would be:</p>
@@ -532,7 +532,7 @@ str(df)
 However, to others should be mentioned:</p>
 <ul>
 <li><code>append</code> : If <code>TRUE</code> the data is appended to the file. Otherwise, the existing file is overwritten.</li>
-<li><code>row.names</code> : Is always use <code>row.names=FALSE</code>, because rownames should not contain information and the columns are better aligned.</li>
+<li><code>row.names</code> : Is always use <code>row.names=FALSE</code>, because row-names should not contain information and the columns are better aligned.</li>
 </ul>
 <p>So to write the above data.frame to a file use:</p>
 <pre><code class="lang-r">write.table(df, <span class="hljs-string">&quot;/home/edisz/mytable.csv&quot;</span>, sep = <span class="hljs-string">&apos;;&apos;</span>, row.names = <span class="hljs-literal">FALSE</span>)
@@ -542,7 +542,7 @@ However, to others should be mentioned:</p>
 Excel file are <a href="http://www.win-vector.com/blog/2012/12/please-stop-using-Excel-like-formats-to-exchange-data/" target="_blank">not a good format</a> to store data and have been hard to read into R.</p>
 <p>Luckily, there is now the <a href="https://cran.r-project.org/web/packages/readxl/index.html" target="_blank"><code>readxl</code></a> package available on CRAN to make this easier. </p>
 <h3 id="other-files">Other files</h3>
-<p>R can also read a lof of other formats (SPSS, GIS-data, ...), however you&apos;ll certainly need additional packages. Just <a href="help.html">search</a> for it on the internet.</p>
+<p>R can also read a lot of other formats (SPSS, GIS-data, ...), however you&apos;ll certainly need additional packages. Just <a href="help.html">search</a> for it on the internet.</p>
 <h3 id="databases">Databases</h3>
 <h3 id="exercises">Exercises</h3>
 

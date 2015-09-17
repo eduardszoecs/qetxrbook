@@ -36,7 +36,7 @@
     <body>
         
         
-    <div class="book" data-level="5" data-basepath=".." data-revision="Thu Sep 17 2015 10:02:27 GMT+0200 (CEST)">
+    <div class="book" data-level="5" data-basepath=".." data-revision="Thu Sep 17 2015 10:24:39 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -494,8 +494,8 @@
                         <h2 id="community-ecotoxicology">Community Ecotoxicology</h2>
 <h3 id="introduction">Introduction</h3>
 <p>In the previous chapters we have dealt with one species at a time.
-However, in nature species occure together with other species and might might interact with each other.
-All the specis and their interactions occuring at one time and space together form a <em>community</em>.</p>
+However, in nature species occur together with other species and might might interact with each other.
+All the species and their interactions occurring at one time and space together form a <em>community</em>.</p>
 <p>As ecotoxicologists we might also to test whole communities with their biotic interactions in order to make more realistic assessments.</p>
 <h3 id="the-data-used-in-this-chapter">The data used in this chapter</h3>
 <p>We will analyse the pyrifos data set of (van den
@@ -521,7 +521,7 @@ head(pyrifos[, c(<span class="hljs-number">1</span>:<span class="hljs-number">11
 ## w.4.c5 4.025     0     0     0     0     0     0 3.466 0.000 0.000 1.609
 ## w.4.c6 2.303     0     0     0     0     0     0 2.197 0.000 0.000 0.693
 </code></pre><p>Rows correspond to samples and columns are the species (with abbreviated names) - a <em>species x sites</em> matrix as commonly used in community ecology.</p>
-<p>The rownames code treatment and time, but we will create a separate data.frame with variables providing information on the experimental ditch, sampling time and treatment: </p>
+<p>The row-names code treatment and time, but we will create a separate data.frame with variables providing information on the experimental ditch, sampling time and treatment: </p>
 <pre><code class="lang-r">week &lt;- gl(<span class="hljs-number">11</span>, <span class="hljs-number">12</span>, labels = c(-<span class="hljs-number">4</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0.1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">8</span>, <span class="hljs-number">12</span>, <span class="hljs-number">15</span>, <span class="hljs-number">19</span>, <span class="hljs-number">24</span>))
 dose &lt;- factor(rep(c(<span class="hljs-number">0.1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.9</span>, <span class="hljs-number">0</span>, <span class="hljs-number">44</span>, <span class="hljs-number">6</span>, <span class="hljs-number">0.1</span>, <span class="hljs-number">44</span>, <span class="hljs-number">0.9</span>, <span class="hljs-number">0</span>, <span class="hljs-number">6</span>), <span class="hljs-number">11</span>))
 ditch &lt;- gl(<span class="hljs-number">12</span>, <span class="hljs-number">1</span>, length=<span class="hljs-number">132</span>)
@@ -569,11 +569,11 @@ ggplot(dfm, aes(x = week, y = value + <span class="hljs-number">1</span>, col = 
   xlab(<span class="hljs-string">&apos;Week&apos;</span>)
 </code></pre>
 <p><img src="figure/pyrifos_raw_plot-1.png" alt="plot of chunk pyrifos_raw_plot"> </p>
-<p>From this plot we see that after aplication (red vertical line) the abundance of 
+<p>From this plot we see that after application (red vertical line) the abundance of 
 <em>Caenis horaria</em>, <em>Cloeon dipterum</em> and <em>Chaoborus obscuripes</em> decreases for the highest doses,
 but recovers to the end of experiment.
 Whereas, <em>Gamarus pulex</em> does not recover. 
-<em>Bithynia tentaculata</em> and Oligochaeta seem the provit from treatment.
+<em>Bithynia tentaculata</em> and Oligochaeta seem the profit from treatment.
 Moreover, there are species in very low abundances where we cannot make any inferences (like <em>Libellulidae</em>).</p>
 
                     
