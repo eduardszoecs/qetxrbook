@@ -23,12 +23,9 @@ This is a very basic GUI and we recommend to use the RStudio interface (*).
 RStudio can be downloaded and installed from [www.rstudio.com](https://www.rstudio.com/products/RStudio/#Desktop).
 
 Again, simply follow the instructions. 
-
 If you open RStudio it will look like this:
 
 ![alt text](../figures/rstudio_basic.png)
-
-
 
 
 

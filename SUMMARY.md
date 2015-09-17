@@ -10,7 +10,7 @@ This is the summary of my book.
     * [Introduction to RStudio](rintro/rstudio.md)
     * [Getting help](rintro/help.md)
     * [Basic data structures & functions](rintro/basic.md)
-    * [Reading data into R](rintro/read_data.md)
+    * [Reading / Writing data](rintro/read_data.md)
     * [Working with data](rintro/work.md)
     * [Linear regression](rintro/regression.md)
     * [Other resources](rintro/r_resources.md)
@@ -32,5 +32,6 @@ This is the summary of my book.
 * [Misc](misc/intro.md)
     * [Retrieving data from the web](misc/webchem.md)
     * [Reproducible Analyses](misc/reproducible.md)
+    * [Installing development versions](misc/github.md)
 
 * [References](references.md)
