@@ -1,3 +1,0 @@
-
-
-## Principal Response Curves (PRC)
