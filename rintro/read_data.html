@@ -36,7 +36,7 @@
     <body>
         
         
-    <div class="book" data-level="2.4" data-basepath=".." data-revision="Thu Sep 17 2015 10:36:26 GMT+0200 (CEST)">
+    <div class="book" data-level="2.4" data-basepath=".." data-revision="Fri Sep 18 2015 09:30:59 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -544,6 +544,26 @@ Excel file are <a href="http://www.win-vector.com/blog/2012/12/please-stop-using
 <h3 id="other-files">Other files</h3>
 <p>R can also read a lot of other formats (SPSS, GIS-data, ...), however you&apos;ll certainly need additional packages. Just <a href="help.html">search</a> for it on the internet.</p>
 <h3 id="databases">Databases</h3>
+<p>R can connect to all major databases like <a href="https://cran.r-project.org/web/packages/RMySQL/index.html" target="_blank">MySQL</a>, <a href="https://cran.r-project.org/web/packages/RPostgreSQL/index.html" target="_blank">PostgreSQL</a> or <a href="https://cran.r-project.org/web/packages/RSQLite/index.html" target="_blank">SQLite</a>.</p>
+<p>The usage is similar for all:</p>
+<ol>
+<li>Connect to the database</li>
+</ol>
+<pre><code class="lang-r">drv &lt;- dbDriver(<span class="hljs-string">&quot;PostgreSQL&quot;</span>)
+con &lt;- dbConnect(drv, dbname = DBname, user = DBuser, host = DBhost, port = DBport)
+</code></pre>
+<p>where <code>DBname</code>, <code>DBuser</code>, <code>DBhost</code> and <code>DBport</code> are characters specifying the details of the connection.</p>
+<ol>
+<li>Query the data you need:</li>
+</ol>
+<pre><code class="lang-r">df &lt;- dbGetQuery(con, <span class="hljs-string">&apos;SELECT * FROM public.df&apos;</span>)
+</code></pre>
+<ol>
+<li>Close the connection when finished:</li>
+</ol>
+<pre><code class="lang-r">dbDisconnect(con)
+dbUnloadDriver(drv)
+</code></pre>
 <h3 id="exercises">Exercises</h3>
 
                     
