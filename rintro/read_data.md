@@ -92,10 +92,39 @@ R can also read a lot of other formats (SPSS, GIS-data, ...), however you'll cer
 
 ### Databases
 
+R can connect to all major databases like [MySQL](https://cran.r-project.org/web/packages/RMySQL/index.html), [PostgreSQL](https://cran.r-project.org/web/packages/RPostgreSQL/index.html) or [SQLite](https://cran.r-project.org/web/packages/RSQLite/index.html).
+
+The usage is similar for all:
+
+1. Connect to the database
+
+
+```r
+drv <- dbDriver("PostgreSQL")
+con <- dbConnect(drv, dbname = DBname, user = DBuser, host = DBhost, port = DBport)
+```
+
+where `DBname`, `DBuser`, `DBhost` and `DBport` are characters specifying the details of the connection.
+
+2. Query the data you need:
+
+
+```r
+df <- dbGetQuery(con, 'SELECT * FROM public.df')
+```
+
+
+3. Close the connection when finished:
+
+
+```r
+dbDisconnect(con)
+dbUnloadDriver(drv)
+```
+
 
 
 ### Exercises
-
 
 
 
