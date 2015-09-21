@@ -126,6 +126,9 @@ dbUnloadDriver(drv)
 
 ### Exercises
 
+There are 3 additional data files in the data-directory (`iris2.csv`, `iris3.csv` and `iris4.csv`). Each of this files has different '*problems*'.
 
-
-
+Read each into R using `read.table()` and specify appropriate arguments. 
+It may be helpful to take a look at the files using a text-editor. 
+The data should have the same structure as above.
+(Hint: read the help for read.table carefully).

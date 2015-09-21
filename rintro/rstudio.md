@@ -17,4 +17,15 @@ The commands type in the editor are not executed. To send the currently selected
 + **The Help/Packages/Plot/Files pane:** Here are plots that you produce shown. Moreover, you can search within the help or browse through packages.
 
 
+### Keys
+
+One of the most powerful keys in RStudio is `TAB`. Try to hit the `TAB` key in many different situations.
+
+RStudio will either
+
+* auto-complete the word your spelling (looking up the objects that are currently availabe to R).
+* show you a list of possible objects.
+* show a shortcut of the help with possible arguments of a function.
+
+
 

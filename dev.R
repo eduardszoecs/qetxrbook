@@ -14,3 +14,5 @@ setwd('/home/edisz/Documents/Uni/Projects/qetxrbook')
 buildGitbook()
 openGitbook()
 publishGitbook('EDiLD/qetxrbook')
+
+

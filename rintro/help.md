@@ -67,7 +67,7 @@ Many package come with (high quality) tutorials/guides on the package.
 You can list all available vignettes with 
 
 ```r
-vigbette()
+vignette()
 ```
 
 To open a specific vignette (here `intro-vegan` -  Introduction to ordination in vegan)
