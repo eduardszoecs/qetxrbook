@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Preface | Quantitative Ecotoxicology with R</title>
+        <title>Basic data structures &amp; functions | Quantitative Ecotoxicology with R</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.3.0">
@@ -25,10 +25,10 @@
         
     
     
-    <link rel="next" href="../preface/why.html" />
+    <link rel="next" href="../rintro/read_data.html" />
     
     
-    <link rel="prev" href="../index.html" />
+    <link rel="prev" href="../rintro/help.html" />
     
 
         
@@ -36,7 +36,7 @@
     <body>
         
         
-    <div class="book" data-level="1" data-basepath=".." data-revision="Mon Sep 21 2015 11:10:27 GMT+0200 (CEST)">
+    <div class="book" data-level="2.3" data-basepath=".." data-revision="Mon Sep 21 2015 11:10:27 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -66,7 +66,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1" data-path="preface/intro.html">
+        <li class="chapter " data-level="1" data-path="preface/intro.html">
             
                 
                     <a href="../preface/intro.html">
@@ -170,7 +170,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.3" data-path="rintro/basic.html">
+        <li class="chapter active" data-level="2.3" data-path="rintro/basic.html">
             
                 
                     <a href="../rintro/basic.html">
@@ -499,7 +499,165 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h2 id="about-this-book">About this book</h2>
+                        <h2 id="first-steps-in-r">First steps in R</h2>
+<p>R is a powerful calculator with standard arithmetic operators:</p>
+<pre><code class="lang-r"><span class="hljs-number">1</span> + <span class="hljs-number">6</span>
+</code></pre>
+<pre><code>## [1] 7
+</code></pre><pre><code class="lang-r"><span class="hljs-number">2</span> * <span class="hljs-number">6</span>
+</code></pre>
+<pre><code>## [1] 12
+</code></pre><pre><code class="lang-r"><span class="hljs-number">2</span> * <span class="hljs-number">6</span> + <span class="hljs-number">1</span>
+</code></pre>
+<pre><code>## [1] 13
+</code></pre><pre><code class="lang-r"><span class="hljs-number">2</span> * (<span class="hljs-number">6</span> + <span class="hljs-number">1</span>)
+</code></pre>
+<pre><code>## [1] 14
+</code></pre><p>If we want to refer to a result later on, we can give them a name.</p>
+<pre><code class="lang-r">a &lt;- <span class="hljs-number">1</span> + <span class="hljs-number">6</span>
+</code></pre>
+<p>Here I <em>assign</em> (<code>&lt;-</code>) the result of <code>1 + 6</code> to an <em>object</em> named <code>a</code>.
+If you just type the name into the console R shows whats inside this object:</p>
+<pre><code class="lang-r">a
+</code></pre>
+<pre><code>## [1] 7
+</code></pre><p>You can also do calculations with this object:</p>
+<pre><code class="lang-r"><span class="hljs-number">2</span> * a
+</code></pre>
+<pre><code>## [1] 14
+</code></pre><p>Note, that R will overwrite objects:</p>
+<pre><code class="lang-r">a
+</code></pre>
+<pre><code>## [1] 7
+</code></pre><pre><code class="lang-r">a &lt;- <span class="hljs-number">2</span>*a
+a
+</code></pre>
+<pre><code>## [1] 14
+</code></pre><p>If R doesn&apos;t know about an object you get the following error:</p>
+<pre><code class="lang-r">b
+</code></pre>
+<pre><code>## Error in eval(expr, envir, enclos): object &apos;b&apos; not found
+</code></pre><p>which says: <em>&quot;I looked for the object &apos;b&apos;, but could not find it&quot;</em>&quot;.</p>
+<p>You can see objects that are available in the <code>Environment</code> pane of RStudio. Alternatively you can use the <code>ls()</code> function.</p>
+<h2 id="data-types-in-r">Data types in R</h2>
+<p>Before starting with data analyses we need to know which types of data R can handle.
+Here we discuss only the basic types <code>numeric</code>, <code>integer</code>, <code>character</code> and <code>logical</code>.</p>
+<h3 id="numerics">Numerics</h3>
+<p>We already encountered the <em>numeric</em> data type in the previous section:</p>
+<pre><code class="lang-r">a &lt;- <span class="hljs-number">2.5</span>
+</code></pre>
+<p>We can check what type an object is with the class function</p>
+<pre><code class="lang-r">class(a)
+</code></pre>
+<pre><code>## [1] &quot;numeric&quot;
+</code></pre><p>Note that integers are also stored as numeric:</p>
+<pre><code class="lang-r">b &lt;- <span class="hljs-number">2</span>
+class(b)
+</code></pre>
+<pre><code>## [1] &quot;numeric&quot;
+</code></pre><p>We can also confirm the type of an object using the <code>is.*()</code> functions (where * is a placeholder for <code>numeric</code>, <code>integer</code>, <code>logical</code> or <code>character</code>).</p>
+<pre><code class="lang-r">is.numeric(b)
+</code></pre>
+<pre><code>## [1] TRUE
+</code></pre><pre><code class="lang-r">is.integer(b)
+</code></pre>
+<pre><code>## [1] FALSE
+</code></pre><h3 id="integers">Integers</h3>
+<p>There isn&apos;t a big practical difference between integers and numeric in R. However, it is useful to know about them.</p>
+<p>To specify an integer object we need to add <code>L</code> to the integer:</p>
+<pre><code class="lang-r">c &lt;- <span class="hljs-number">2L</span>
+class(c)
+</code></pre>
+<pre><code>## [1] &quot;integer&quot;
+</code></pre><p>We can also convert a numeric to integer using the <code>as.integer()</code> function.</p>
+<pre><code class="lang-r">b
+</code></pre>
+<pre><code>## [1] 2
+</code></pre><pre><code class="lang-r">class(b)
+</code></pre>
+<pre><code>## [1] &quot;numeric&quot;
+</code></pre><pre><code class="lang-r">d &lt;- as.integer(b)
+d
+</code></pre>
+<pre><code>## [1] 2
+</code></pre><pre><code class="lang-r">class(d)
+</code></pre>
+<pre><code>## [1] &quot;integer&quot;
+</code></pre><p>There are also equivalent <code>as.*()</code> functions for <code>numeric</code>, <code>logical</code> or <code>character</code>.
+However, be careful we converting numerics:</p>
+<pre><code class="lang-r">as.integer(<span class="hljs-number">6.23</span>)
+as.integer(<span class="hljs-number">6.7</span>)
+</code></pre>
+<pre><code>## [1] 6
+## [1] 6
+</code></pre><p>Also converting strings make no sense</p>
+<pre><code class="lang-r">as.integer(<span class="hljs-string">&apos;Hello World&apos;</span>)
+</code></pre>
+<pre><code>## Warning: NAs introduced by coercion
+</code></pre><pre><code>## [1] NA
+</code></pre><p>and R returns <code>NA</code> accomnied with a warning that it cannot coerce to a integer.</p>
+<h3 id="characters">Characters</h3>
+<p>Character objects are used to represent string values in R:</p>
+<pre><code class="lang-r">a &lt;- <span class="hljs-string">&apos;Hello World&apos;</span>
+class(a)
+</code></pre>
+<pre><code>## [1] &quot;character&quot;
+</code></pre><p>We can always coerce integers and numerics to characters:</p>
+<pre><code class="lang-r">as.character(<span class="hljs-number">2L</span>)
+as.character(<span class="hljs-number">2.6</span>)
+</code></pre>
+<pre><code>## [1] &quot;2&quot;
+## [1] &quot;2.6&quot;
+</code></pre><p>and also sometimes (when possible) the way round:</p>
+<pre><code class="lang-r">as.numeric(as.character(<span class="hljs-number">2.6</span>))
+</code></pre>
+<pre><code>## [1] 2.6
+</code></pre><pre><code class="lang-r">as.numeric(<span class="hljs-string">&apos;Hello World&apos;</span>)
+</code></pre>
+<pre><code>## Warning: NAs introduced by coercion
+</code></pre><pre><code>## [1] NA
+</code></pre><h3 id="logicals">Logicals</h3>
+<p>We already encoutered logicals when checking objects with the <code>is.*()</code> function. 
+This function returned either <code>TRUE</code> or <code>FALSE</code>. 
+Logicals are also returned when comparing two numerics</p>
+<pre><code class="lang-r"><span class="hljs-number">2</span> &lt; <span class="hljs-number">3</span>  <span class="hljs-comment"># is 2 smaller then 3?</span>
+<span class="hljs-number">5</span> &gt; <span class="hljs-number">6</span>  <span class="hljs-comment"># is 5 bigger the 6</span>
+<span class="hljs-number">5</span> &gt; <span class="hljs-number">5</span> <span class="hljs-comment"># is 5 greater then 5</span>
+<span class="hljs-number">5</span> &gt;= <span class="hljs-number">5</span> <span class="hljs-comment"># is 5 greater or equal then 5</span>
+</code></pre>
+<pre><code>## [1] TRUE
+## [1] FALSE
+## [1] FALSE
+## [1] TRUE
+</code></pre><p>Logical operators in R are <code>&amp;</code> (AND), <code>|</code> OR and <code>!</code> (negotiation):</p>
+<pre><code class="lang-r"><span class="hljs-literal">TRUE</span> &amp; <span class="hljs-literal">TRUE</span>
+<span class="hljs-literal">TRUE</span> &amp; <span class="hljs-literal">FALSE</span>
+<span class="hljs-literal">FALSE</span> &amp; <span class="hljs-literal">TRUE</span>
+<span class="hljs-literal">FALSE</span> &amp; <span class="hljs-literal">FALSE</span>
+</code></pre>
+<pre><code>## [1] TRUE
+## [1] FALSE
+## [1] FALSE
+## [1] FALSE
+</code></pre><pre><code class="lang-r"><span class="hljs-literal">TRUE</span> | <span class="hljs-literal">TRUE</span>
+<span class="hljs-literal">TRUE</span> | <span class="hljs-literal">FALSE</span>
+<span class="hljs-literal">FALSE</span> | <span class="hljs-literal">TRUE</span>
+<span class="hljs-literal">FALSE</span> | <span class="hljs-literal">FALSE</span>
+</code></pre>
+<pre><code>## [1] TRUE
+## [1] TRUE
+## [1] TRUE
+## [1] FALSE
+</code></pre><pre><code class="lang-r"><span class="hljs-literal">TRUE</span>
+!<span class="hljs-literal">TRUE</span>
+</code></pre>
+<pre><code>## [1] TRUE
+## [1] FALSE
+</code></pre><h2 id="data-structures-in-r">Data structures in R</h2>
+<h3 id="vectors">Vectors</h3>
+<h3 id="matrices">Matrices</h3>
+<h3 id="data-frames">Data.frames</h3>
+<h3 id="lists">Lists</h3>
 
                     
                     </section>
@@ -510,10 +668,10 @@
         </div>
 
         
-        <a href="../index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        <a href="../rintro/help.html" class="navigation navigation-prev " aria-label="Previous page: Getting help"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../preface/why.html" class="navigation navigation-next " aria-label="Next page: Why use R?"><i class="fa fa-angle-right"></i></a>
+        <a href="../rintro/read_data.html" class="navigation navigation-next " aria-label="Next page: Reading / Writing data"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
