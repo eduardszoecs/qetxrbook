@@ -36,7 +36,7 @@
     <body>
         
         
-    <div class="book" data-level="2.3" data-basepath=".." data-revision="Mon Sep 21 2015 11:10:27 GMT+0200 (CEST)">
+    <div class="book" data-level="2.3" data-basepath=".." data-revision="Wed Sep 23 2015 11:17:28 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -501,18 +501,57 @@
                     
                         <h2 id="first-steps-in-r">First steps in R</h2>
 <p>R is a powerful calculator with standard arithmetic operators:</p>
-<pre><code class="lang-r"><span class="hljs-number">1</span> + <span class="hljs-number">6</span>
+<pre><code class="lang-r"><span class="hljs-comment"># Addition</span>
+<span class="hljs-number">1</span> + <span class="hljs-number">6</span>
 </code></pre>
 <pre><code>## [1] 7
-</code></pre><pre><code class="lang-r"><span class="hljs-number">2</span> * <span class="hljs-number">6</span>
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># Multiplication</span>
+<span class="hljs-number">2</span> * <span class="hljs-number">6</span>
 </code></pre>
 <pre><code>## [1] 12
-</code></pre><pre><code class="lang-r"><span class="hljs-number">2</span> * <span class="hljs-number">6</span> + <span class="hljs-number">1</span>
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># multiplication and division first, then addition and subtraction</span>
+<span class="hljs-number">2</span> * <span class="hljs-number">6</span> + <span class="hljs-number">1</span>
 </code></pre>
 <pre><code>## [1] 13
-</code></pre><pre><code class="lang-r"><span class="hljs-number">2</span> * (<span class="hljs-number">6</span> + <span class="hljs-number">1</span>)
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># use of brackets</span>
+<span class="hljs-number">2</span> * (<span class="hljs-number">6</span> + <span class="hljs-number">1</span>)
 </code></pre>
 <pre><code>## [1] 14
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># square root</span>
+sqrt(<span class="hljs-number">16</span>)
+</code></pre>
+<pre><code>## [1] 4
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># powers</span>
+<span class="hljs-number">16</span>^<span class="hljs-number">0.5</span>
+</code></pre>
+<pre><code>## [1] 4
+</code></pre><pre><code class="lang-r"><span class="hljs-number">2</span>^<span class="hljs-number">2</span>
+</code></pre>
+<pre><code>## [1] 4
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># natural log</span>
+log(<span class="hljs-number">10</span>)
+</code></pre>
+<pre><code>## [1] 2.302585
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># decadic log</span>
+log10(<span class="hljs-number">10</span>)
+</code></pre>
+<pre><code>## [1] 1
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># log to base of 4</span>
+log(<span class="hljs-number">10</span>, <span class="hljs-number">4</span>)
+</code></pre>
+<pre><code>## [1] 1.660964
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># exponential</span>
+exp(<span class="hljs-number">2</span>)
+</code></pre>
+<pre><code>## [1] 7.389056
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># pi is a built-in constant</span>
+pi
+</code></pre>
+<pre><code>## [1] 3.141593
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># but not e</span>
+e^<span class="hljs-number">2</span>
+</code></pre>
+<pre><code>## Error in eval(expr, envir, enclos): object &apos;e&apos; not found
 </code></pre><p>If we want to refer to a result later on, we can give them a name.</p>
 <pre><code class="lang-r">a &lt;- <span class="hljs-number">1</span> + <span class="hljs-number">6</span>
 </code></pre>
@@ -536,7 +575,7 @@ a
 </code></pre><p>If R doesn&apos;t know about an object you get the following error:</p>
 <pre><code class="lang-r">b
 </code></pre>
-<pre><code>## Error in eval(expr, envir, enclos): object &apos;b&apos; not found
+<pre><code>## [1] 1.0 2.0 2.5
 </code></pre><p>which says: <em>&quot;I looked for the object &apos;b&apos;, but could not find it&quot;</em>&quot;.</p>
 <p>You can see objects that are available in the <code>Environment</code> pane of RStudio. Alternatively you can use the <code>ls()</code> function.</p>
 <h2 id="data-types-in-r">Data types in R</h2>
@@ -616,6 +655,16 @@ as.character(<span class="hljs-number">2.6</span>)
 </code></pre>
 <pre><code>## Warning: NAs introduced by coercion
 </code></pre><pre><code>## [1] NA
+</code></pre><p>With <code>numeric</code> and <code>integers</code> we can do arithmetics,</p>
+<pre><code class="lang-r"><span class="hljs-number">2</span> + <span class="hljs-number">1</span>
+<span class="hljs-number">2L</span> + <span class="hljs-number">1</span>
+</code></pre>
+<pre><code>## [1] 3
+## [1] 3
+</code></pre><p>, but not with <code>charactars</code> this is meaningless and gives this error</p>
+<pre><code class="lang-r"><span class="hljs-string">&apos;Hello world&apos;</span> + <span class="hljs-number">1</span>
+</code></pre>
+<pre><code>## Error in &quot;Hello world&quot; + 1: non-numeric argument to binary operator
 </code></pre><h3 id="logicals">Logicals</h3>
 <p>We already encoutered logicals when checking objects with the <code>is.*()</code> function. 
 This function returned either <code>TRUE</code> or <code>FALSE</code>. 
@@ -653,9 +702,148 @@ Logicals are also returned when comparing two numerics</p>
 </code></pre>
 <pre><code>## [1] TRUE
 ## [1] FALSE
+</code></pre><p>Logicals can be coerced to <em>integers</em> or <em>numerics</em>, with <code>TRUE</code> beeing mapped to 1 and <code>FALSE</code> to 0.</p>
+<pre><code class="lang-r">as.numeric(<span class="hljs-literal">TRUE</span>)
+</code></pre>
+<pre><code>## [1] 1
+</code></pre><p>This is handy because we can also calculated the sum:</p>
+<pre><code class="lang-r"><span class="hljs-literal">TRUE</span> + <span class="hljs-literal">TRUE</span>
+</code></pre>
+<pre><code>## [1] 2
+</code></pre><pre><code class="lang-r"><span class="hljs-number">3</span>*<span class="hljs-literal">TRUE</span> + <span class="hljs-literal">FALSE</span> + <span class="hljs-literal">TRUE</span>
+</code></pre>
+<pre><code>## [1] 4
 </code></pre><h2 id="data-structures-in-r">Data structures in R</h2>
 <h3 id="vectors">Vectors</h3>
-<h3 id="matrices">Matrices</h3>
+<p>Vectors are the basic data structure in R. 
+Vectors are one-dimensional structures (remember linear algebra from school?) and all numbers that we typed above were vectors with the lenght of one.
+We can query the length of a vector using <code>length()</code></p>
+<pre><code class="lang-r"><span class="hljs-comment"># this is a vector of lenght 1</span>
+<span class="hljs-number">25</span>
+</code></pre>
+<pre><code>## [1] 25
+</code></pre><pre><code class="lang-r">length(<span class="hljs-number">25</span>)
+</code></pre>
+<pre><code>## [1] 1
+</code></pre><p>We can create vectors using the <code>c()</code> function (short for <em>combine</em>):</p>
+<pre><code class="lang-r">num_vec &lt;- c(<span class="hljs-number">25</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">6</span>)
+num_vec
+</code></pre>
+<pre><code>## [1] 25  1  3  6
+</code></pre><pre><code class="lang-r">length(num_vec)
+</code></pre>
+<pre><code>## [1] 4
+</code></pre><p>Or logical vectors:</p>
+<pre><code class="lang-r">log_vec &lt;- c(<span class="hljs-literal">TRUE</span>, <span class="hljs-literal">FALSE</span>, <span class="hljs-literal">FALSE</span>, <span class="hljs-literal">TRUE</span>, <span class="hljs-literal">TRUE</span>)
+log_vec
+</code></pre>
+<pre><code>## [1]  TRUE FALSE FALSE  TRUE  TRUE
+</code></pre><pre><code class="lang-r">length(log_vec)
+</code></pre>
+<pre><code>## [1] 5
+</code></pre><pre><code class="lang-r">class(log_vec)
+</code></pre>
+<pre><code>## [1] &quot;logical&quot;
+</code></pre><p>Note that all elements must be of the same type. 
+If we combine elements from different type the whole vector will be coerced to the lowest type (<code>logical</code> &gt; <code>integer</code> &gt; <code>numeric</code> &gt; <code>character</code>):</p>
+<pre><code class="lang-r">a &lt;- c(<span class="hljs-literal">TRUE</span>, <span class="hljs-number">2L</span>, <span class="hljs-number">2.5</span>, <span class="hljs-string">&apos;hello&apos;</span>)
+a
+</code></pre>
+<pre><code>## [1] &quot;TRUE&quot;  &quot;2&quot;     &quot;2.5&quot;   &quot;hello&quot;
+</code></pre><pre><code class="lang-r">class(a)
+</code></pre>
+<pre><code>## [1] &quot;character&quot;
+</code></pre><pre><code class="lang-r">b &lt;- c(<span class="hljs-literal">TRUE</span>, <span class="hljs-number">2L</span>, <span class="hljs-number">2.5</span>)
+b
+</code></pre>
+<pre><code>## [1] 1.0 2.0 2.5
+</code></pre><pre><code class="lang-r">class(b)
+</code></pre>
+<pre><code>## [1] &quot;numeric&quot;
+</code></pre><pre><code class="lang-r">c &lt;- c(<span class="hljs-literal">FALSE</span>, <span class="hljs-string">&apos;hello&apos;</span>)
+class(c)
+</code></pre>
+<pre><code>## [1] &quot;character&quot;
+</code></pre><p>We can also do math with vectors:</p>
+<pre><code class="lang-r">num_vec &lt;- c(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>)
+num_vec
+</code></pre>
+<pre><code>## [1] 1 2 3
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># elementwise addition</span>
+num_vec + <span class="hljs-number">2</span>
+</code></pre>
+<pre><code>## [1] 3 4 5
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># elementwise power</span>
+num_vec^<span class="hljs-number">2</span>
+</code></pre>
+<pre><code>## [1] 1 4 9
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># sum of vector elements</span>
+sum(num_vec)
+</code></pre>
+<pre><code>## [1] 6
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># mean of vector</span>
+sum(num_vec) / length(num_vec)
+</code></pre>
+<pre><code>## [1] 2
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># or directly suing the mean() function</span>
+mean(num_vec)
+</code></pre>
+<pre><code>## [1] 2
+</code></pre><p>Often, we need to create sequences of numbers.
+Here the <code>seq()</code> function is handy, it take at least two arguments <code>from</code> and <code>to</code></p>
+<pre><code class="lang-r"><span class="hljs-comment"># sequence from 2 to 10</span>
+seq(from = <span class="hljs-number">2</span>, to = <span class="hljs-number">10</span>)
+</code></pre>
+<pre><code>## [1]  2  3  4  5  6  7  8  9 10
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># sequence from 10 to 3</span>
+seq(from = <span class="hljs-number">10</span>, to = <span class="hljs-number">3</span>)
+</code></pre>
+<pre><code>## [1] 10  9  8  7  6  5  4  3
+</code></pre><p>A shortcut for such sequences with steps of 1 or -1 is the colon operator <code>:</code></p>
+<pre><code class="lang-r"><span class="hljs-comment"># sequence from 2 to 10</span>
+<span class="hljs-number">2</span>:<span class="hljs-number">10</span>
+</code></pre>
+<pre><code>## [1]  2  3  4  5  6  7  8  9 10
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># sequence from 10 to 3</span>
+<span class="hljs-number">10</span>:<span class="hljs-number">3</span>
+</code></pre>
+<pre><code>## [1] 10  9  8  7  6  5  4  3
+</code></pre><p>The colon operator will be very handy later on. 
+However, <code>seq</code> is much more flexibel as we can change the stepsize</p>
+<pre><code class="lang-r"><span class="hljs-comment"># sequence from 2 to 5 in steps of 0.5</span>
+seq(from = <span class="hljs-number">2</span>, to = <span class="hljs-number">5</span>, by = <span class="hljs-number">0.5</span>)
+</code></pre>
+<pre><code>## [1] 2.0 2.5 3.0 3.5 4.0 4.5 5.0
+</code></pre><p>Or specify the length of the sequence</p>
+<pre><code class="lang-r"><span class="hljs-comment"># sequence from 2 in steps of 0.5 with length of 5</span>
+seq(from = <span class="hljs-number">2</span>, by = <span class="hljs-number">0.5</span>, length.out = <span class="hljs-number">5</span>)
+</code></pre>
+<pre><code>## [1] 2.0 2.5 3.0 3.5 4.0
+</code></pre><p>Note, that we can omit the argument names, but the R assumes that the arguments passed are in the correct order:</p>
+<pre><code class="lang-r"><span class="hljs-comment"># sequence from 2 to 5 in steps of 0.5</span>
+seq(<span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">0.5</span>)
+</code></pre>
+<pre><code>## [1] 2.0 2.5 3.0 3.5 4.0 4.5 5.0
+</code></pre><p>Howevr this does not give the inteded results, because 5 is interpreted as <code>by</code> argument (third position).</p>
+<pre><code class="lang-r"><span class="hljs-comment"># intended result: sequence from 2 in steps of 0.5 with length of 5</span>
+seq(<span class="hljs-number">2</span>, <span class="hljs-number">0.5</span>, <span class="hljs-number">5</span>)
+</code></pre>
+<pre><code>## Error in seq.default(2, 0.5, 5): wrong sign in &apos;by&apos; argument
+</code></pre><p>Another useful fucntion is the replicate function <code>rep()</code>:</p>
+<pre><code class="lang-r"><span class="hljs-comment"># repeats the vector hello 3 times</span>
+rep(<span class="hljs-string">&apos;hello&apos;</span>, times = <span class="hljs-number">3</span>)
+</code></pre>
+<pre><code>## [1] &quot;hello&quot; &quot;hello&quot; &quot;hello&quot;
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># repeats the vector c(&apos;hello&apos;, &apos;world&apos;) 3 times</span>
+rep(c(<span class="hljs-string">&apos;hello&apos;</span>, <span class="hljs-string">&apos;world&apos;</span>), times = <span class="hljs-number">3</span>)
+</code></pre>
+<pre><code>## [1] &quot;hello&quot; &quot;world&quot; &quot;hello&quot; &quot;world&quot; &quot;hello&quot; &quot;world&quot;
+</code></pre><p>If we want to repeat each vector element we need to use the <code>each</code> argument:</p>
+<pre><code class="lang-r"><span class="hljs-comment"># repeats each element of the vector c(&apos;hello&apos;, &apos;world&apos;) 3 times</span>
+rep(c(<span class="hljs-string">&apos;hello&apos;</span>, <span class="hljs-string">&apos;world&apos;</span>), each = <span class="hljs-number">3</span>)
+</code></pre>
+<pre><code>## [1] &quot;hello&quot; &quot;hello&quot; &quot;hello&quot; &quot;world&quot; &quot;world&quot; &quot;world&quot;
+</code></pre><h3 id="matrices">Matrices</h3>
 <h3 id="data-frames">Data.frames</h3>
 <h3 id="lists">Lists</h3>
 
