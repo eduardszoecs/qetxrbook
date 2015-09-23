@@ -6,6 +6,7 @@ R is a powerful calculator with standard arithmetic operators:
 
 
 ```r
+# Addition
 1 + 6
 ```
 
@@ -15,6 +16,7 @@ R is a powerful calculator with standard arithmetic operators:
 
 
 ```r
+# Multiplication
 2 * 6
 ```
 
@@ -24,6 +26,7 @@ R is a powerful calculator with standard arithmetic operators:
 
 
 ```r
+# multiplication and division first, then addition and subtraction
 2 * 6 + 1
 ```
 
@@ -33,12 +36,105 @@ R is a powerful calculator with standard arithmetic operators:
 
 
 ```r
+# use of brackets
 2 * (6 + 1)
 ```
 
 ```
 ## [1] 14
 ```
+
+
+```r
+# square root
+sqrt(16)
+```
+
+```
+## [1] 4
+```
+
+
+```r
+# powers
+16^0.5
+```
+
+```
+## [1] 4
+```
+
+```r
+2^2
+```
+
+```
+## [1] 4
+```
+
+
+```r
+# natural log
+log(10)
+```
+
+```
+## [1] 2.302585
+```
+
+
+```r
+# decadic log
+log10(10)
+```
+
+```
+## [1] 1
+```
+
+
+```r
+# log to base of 4
+log(10, 4)
+```
+
+```
+## [1] 1.660964
+```
+
+
+```r
+# exponential
+exp(2)
+```
+
+```
+## [1] 7.389056
+```
+
+
+```r
+# pi is a built-in constant
+pi
+```
+
+```
+## [1] 3.141593
+```
+
+```r
+# but not e
+e^2
+```
+
+```
+## Error in eval(expr, envir, enclos): object 'e' not found
+```
+
+
+
+
+
 
 
 
@@ -98,7 +194,7 @@ b
 ```
 
 ```
-## Error in eval(expr, envir, enclos): object 'b' not found
+## [1] 1.0 2.0 2.5
 ```
 
 which says: *"I looked for the object 'b', but could not find it"*".
@@ -298,6 +394,30 @@ as.numeric('Hello World')
 ## [1] NA
 ```
 
+With `numeric` and `integers` we can do arithmetics,
+
+```r
+2 + 1
+2L + 1
+```
+
+```
+## [1] 3
+## [1] 3
+```
+
+, but not with `charactars` this is meaningless and gives this error
+
+
+```r
+'Hello world' + 1
+```
+
+```
+## Error in "Hello world" + 1: non-numeric argument to binary operator
+```
+
+
 
 ### Logicals
 
@@ -365,10 +485,355 @@ TRUE
 ```
 
 
+Logicals can be coerced to *integers* or *numerics*, with `TRUE` beeing mapped to 1 and `FALSE` to 0.
+
+
+```r
+as.numeric(TRUE)
+```
+
+```
+## [1] 1
+```
+
+This is handy because we can also calculated the sum:
+
+
+```r
+TRUE + TRUE
+```
+
+```
+## [1] 2
+```
+
+
+```r
+3*TRUE + FALSE + TRUE
+```
+
+```
+## [1] 4
+```
+
+
+
+
 ## Data structures in R
 
 
 ### Vectors
+
+Vectors are the basic data structure in R. 
+Vectors are one-dimensional structures (remember linear algebra from school?) and all numbers that we typed above were vectors with the lenght of one.
+We can query the length of a vector using `length()`
+
+
+```r
+# this is a vector of lenght 1
+25
+```
+
+```
+## [1] 25
+```
+
+```r
+length(25)
+```
+
+```
+## [1] 1
+```
+
+We can create vectors using the `c()` function (short for *combine*):
+
+
+```r
+num_vec <- c(25, 1, 3, 6)
+num_vec
+```
+
+```
+## [1] 25  1  3  6
+```
+
+```r
+length(num_vec)
+```
+
+```
+## [1] 4
+```
+
+Or logical vectors:
+
+
+```r
+log_vec <- c(TRUE, FALSE, FALSE, TRUE, TRUE)
+log_vec
+```
+
+```
+## [1]  TRUE FALSE FALSE  TRUE  TRUE
+```
+
+```r
+length(log_vec)
+```
+
+```
+## [1] 5
+```
+
+```r
+class(log_vec)
+```
+
+```
+## [1] "logical"
+```
+
+Note that all elements must be of the same type. 
+If we combine elements from different type the whole vector will be coerced to the lowest type (`logical` > `integer` > `numeric` > `character`):
+
+
+```r
+a <- c(TRUE, 2L, 2.5, 'hello')
+a
+```
+
+```
+## [1] "TRUE"  "2"     "2.5"   "hello"
+```
+
+```r
+class(a)
+```
+
+```
+## [1] "character"
+```
+
+```r
+b <- c(TRUE, 2L, 2.5)
+b
+```
+
+```
+## [1] 1.0 2.0 2.5
+```
+
+```r
+class(b)
+```
+
+```
+## [1] "numeric"
+```
+
+```r
+c <- c(FALSE, 'hello')
+class(c)
+```
+
+```
+## [1] "character"
+```
+
+We can also do math with vectors:
+
+
+```r
+num_vec <- c(1, 2, 3)
+num_vec
+```
+
+```
+## [1] 1 2 3
+```
+
+
+```r
+# elementwise addition
+num_vec + 2
+```
+
+```
+## [1] 3 4 5
+```
+
+
+```r
+# elementwise power
+num_vec^2
+```
+
+```
+## [1] 1 4 9
+```
+
+
+```r
+# sum of vector elements
+sum(num_vec)
+```
+
+```
+## [1] 6
+```
+
+
+```r
+# mean of vector
+sum(num_vec) / length(num_vec)
+```
+
+```
+## [1] 2
+```
+
+```r
+# or directly suing the mean() function
+mean(num_vec)
+```
+
+```
+## [1] 2
+```
+
+
+Often, we need to create sequences of numbers.
+Here the `seq()` function is handy, it take at least two arguments `from` and `to`
+
+
+```r
+# sequence from 2 to 10
+seq(from = 2, to = 10)
+```
+
+```
+## [1]  2  3  4  5  6  7  8  9 10
+```
+
+```r
+# sequence from 10 to 3
+seq(from = 10, to = 3)
+```
+
+```
+## [1] 10  9  8  7  6  5  4  3
+```
+
+A shortcut for such sequences with steps of 1 or -1 is the colon operator `:`
+
+
+```r
+# sequence from 2 to 10
+2:10
+```
+
+```
+## [1]  2  3  4  5  6  7  8  9 10
+```
+
+```r
+# sequence from 10 to 3
+10:3
+```
+
+```
+## [1] 10  9  8  7  6  5  4  3
+```
+
+The colon operator will be very handy later on. 
+However, `seq` is much more flexibel as we can change the stepsize
+
+
+```r
+# sequence from 2 to 5 in steps of 0.5
+seq(from = 2, to = 5, by = 0.5)
+```
+
+```
+## [1] 2.0 2.5 3.0 3.5 4.0 4.5 5.0
+```
+
+Or specify the length of the sequence
+
+
+```r
+# sequence from 2 in steps of 0.5 with length of 5
+seq(from = 2, by = 0.5, length.out = 5)
+```
+
+```
+## [1] 2.0 2.5 3.0 3.5 4.0
+```
+
+Note, that we can omit the argument names, but the R assumes that the arguments passed are in the correct order:
+
+
+```r
+# sequence from 2 to 5 in steps of 0.5
+seq(2, 5, 0.5)
+```
+
+```
+## [1] 2.0 2.5 3.0 3.5 4.0 4.5 5.0
+```
+
+Howevr this does not give the inteded results, because 5 is interpreted as `by` argument (third position).
+
+```r
+# intended result: sequence from 2 in steps of 0.5 with length of 5
+seq(2, 0.5, 5)
+```
+
+```
+## Error in seq.default(2, 0.5, 5): wrong sign in 'by' argument
+```
+
+
+
+Another useful fucntion is the replicate function `rep()`:
+
+
+
+```r
+# repeats the vector hello 3 times
+rep('hello', times = 3)
+```
+
+```
+## [1] "hello" "hello" "hello"
+```
+
+
+```r
+# repeats the vector c('hello', 'world') 3 times
+rep(c('hello', 'world'), times = 3)
+```
+
+```
+## [1] "hello" "world" "hello" "world" "hello" "world"
+```
+
+If we want to repeat each vector element we need to use the `each` argument:
+
+
+
+```r
+# repeats each element of the vector c('hello', 'world') 3 times
+rep(c('hello', 'world'), each = 3)
+```
+
+```
+## [1] "hello" "hello" "hello" "world" "world" "world"
+```
+
+
+
 
 ### Matrices
 
