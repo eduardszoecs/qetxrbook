@@ -1,2 +1,8 @@
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+#! status : in work
+```
+
+
 ## About this book
 

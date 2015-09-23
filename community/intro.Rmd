@@ -2,6 +2,7 @@
 knitr::opts_chunk$set(echo = TRUE)
 require(knitcitations)
 bib <- read.bibtex('/home/edisz/Documents/Uni/Projects/qetxrbook/references.bib')
+#! status : finished first draft
 ```
 
 ## Community Ecotoxicology

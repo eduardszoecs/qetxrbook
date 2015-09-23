@@ -19,6 +19,10 @@ This is the summary of my book.
     * [LC50](dose_response/lc50.md)
     * [Control mortality](dose_response/control_mortality.md)
     
+* [Survival Analysis](survival/intro.md)
+  * [Kaplan-Meier estimates](survival/kaplan.md)
+  * [Time-to-death analysis](survival/time-to-death.md)
+    
 * [Hypothesis testing](hypotheses/intro.md)
     * [NOEC](hypotheses/noec.md)
     * [GLM](hypotheses/glm.md)
