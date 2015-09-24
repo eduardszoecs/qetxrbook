@@ -1,0 +1,110 @@
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+#! status : in works
+```
+
+## First steps in R
+
+R is a powerful calculator with standard arithmetic operators:
+
+```{r}
+# Addition
+1 + 6
+```
+
+```{r}
+# Multiplication
+2 * 6
+```
+
+```{r}
+# multiplication and division first, then addition and subtraction
+2 * 6 + 1
+```
+
+```{r}
+# use of brackets
+2 * (6 + 1)
+```
+
+```{r}
+# square root
+sqrt(16)
+```
+
+```{r}
+# powers
+16^0.5
+2^2
+```
+
+```{r}
+# natural log
+log(10)
+```
+
+```{r}
+# decadic log
+log10(10)
+```
+
+```{r}
+# log to base of 4
+log(10, 4)
+```
+
+```{r}
+# exponential
+exp(2)
+```
+
+```{r error=TRUE}
+# pi is a built-in constant
+pi
+# but not e
+e^2
+```
+
+
+
+
+
+
+
+
+If we want to refer to a result later on, we can give them a name.
+
+```{r}
+a <- 1 + 6
+```
+
+Here I *assign* (`<-`) the result of `1 + 6` to an *object* named `a`.
+If you just type the name into the console R shows whats inside this object:
+
+```{r}
+a
+```
+
+You can also do calculations with this object:
+
+```{r}
+2 * a
+```
+
+Note, that R will overwrite objects:
+```{r}
+a
+a <- 2*a
+a
+```
+
+If R doesn't know about an object you get the following error:
+```{r error=TRUE}
+b
+```
+
+which says: *"I looked for the object 'b', but could not find it"*".
+
+You can see objects that are available in the `Environment` pane of RStudio. Alternatively you can use the `ls()` function.
+
+

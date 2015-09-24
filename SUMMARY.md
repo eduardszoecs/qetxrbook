@@ -1,5 +1,4 @@
 # Summary
-This is the summary of my book.
 
 * [Preface](preface/intro.md)
     * [Why use R?](preface/why.md)
@@ -9,7 +8,9 @@ This is the summary of my book.
 * [Introduction to R](rintro/intro.md)
     * [Introduction to RStudio](rintro/rstudio.md)
     * [Getting help](rintro/help.md)
-    * [Basic data structures & functions](rintro/basic.md)
+    * [First steps](rintro/first.md)
+    * [Data types](rintro/types.md)
+    * [Data structures](rintro/structures.md)
     * [Reading / Writing data](rintro/read_data.md)
     * [Working with data](rintro/work.md)
     * [Linear regression](rintro/regression.md)
