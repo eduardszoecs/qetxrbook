@@ -1,4 +1,4 @@
-```{r setup, include=FALSE}
+# ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 #! status : in works
 ```
@@ -272,11 +272,65 @@ TRUE + TRUE
 ```
 
 
+### Factors
+Factors are a fourth, more special, data type in R. 
+You can think of factors as special character vectors with some nice additional functions.
+
+You can create factors using the `factor` function:
+```{r}
+fac <- factor(c('A', 'A', 'B', 'B'))
+class(fac)
+fac
+```
+
+From the output you see that factors store another information: the `levels` of the data. 
+
+In fact R stores them internally as integers and only labels these integers according to it's levels.
+Therefore, `as.numeric() return a vector of these internal integers:
+
+```{r}
+as.numeric(fac)
+```
+
+and not an error like above with character vectors.
+
+Be careful with numeric factors!
+While for character vectors that can be coerced to numeric, ´as.numeric` returns the desired result
+
+
+```{r}
+char <- c('2', '2', '3', '3')
+as.numeric(char)
+```
+
+this is not the case for factors:
+
+```{r}
+as.numeric(factor(char))
+```
+
+Here it returns the internal integer value (these are ordered by alphabet).
+
+To return the desired result, first coerce to character (making R to forget about the levels) and then to numeric.
+
+```{r}
+as.numeric(as.character(factor(char)))
+```
+
+
+You can access the levels of a factor using the `levels()` fucntion:
+
+```{r}
+levels(fac)
+```
+
+
+Factors are useful for categorical data and we will encounter them later on when dealing with linear models. For now just keep in mind that factors are special characters, with special properties.
+
+
 
 
 ## Data structures in R
-
-
 ### Vectors
 
 Vectors are the basic data structure in R. 
@@ -427,6 +481,69 @@ rep(c('hello', 'world'), each = 3)
 
 ### Matrices
 
+Matrices are the 2-dimensional extension of vectors. 
+
+We can combine two vectors to a matrix using `cbind` (combine by columns) or `rbind` combine by rows:
+
+```{r}
+vec1 <- 1:5
+vec2 <- rep(9, 5)
+# combine by columns
+mat1 <- cbind(vec1, vec2)
+mat1
+# combine by rows
+mat2 <- rbind(vec1, vec2)
+mat2
+class(mat2)
+```
+
+Similar, to the `length` function for vectors, there is a dimension function for matrices
+
+```{r}
+dim(mat1) # 5 rows, 2 columns
+dim(mat2) # 2 rows, 5 columns
+```
+
+As with vectors, all elements in a matrix must be of same type. If not the are coerced downwards.
+
+```{r}
+cbind(c(1, 3), 
+  c('hello', 'world'))
+```
+
+An we can do elementwise arithmetic
+
+```{r}
+mat1 + 10
+sqrt(mat1)
+```
+
+Matrices can be also created with the `matrix()` function:
+
+
+```{r}
+rot <- matrix(c(0, 1, 
+                1, 0), ncol = 2, byrow = TRUE)
+```
+
+
+
 ### Data.frames
+The constrained of matrices having all data of same type is not very appealing for data analysis, where we might have different variable types in one data sheet (e.g numeric descriptors and categorical descriptors). 
+Nevertheless, matrices and matrix algebra playa a central role in R's computations.
+
+A `data.frame` in another, more flexibel, 2-dimensional data structure. 
+In fact, it will be your mostly used structure. 
+`data.frames` allow different types of variables, but all must be of the same lenght.
+
+You can create data.frames using the `data.frame()` function:
+
+```{r}
+df <- data.frame(1:5, c('A', 'A', 'A', 'B', 'B'))
+df
+```
+
+
+
 
 ### Lists
