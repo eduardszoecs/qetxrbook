@@ -1,0 +1,53 @@
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Generating data
+
+If you don't have data you can make up some data for yourself ;)
+Seriously, this is very helpful when doing simulations. 
+We will use these techniques in the parametric bootstrap for Species Sensitivity Distributions (SSDS) [---!!!Link here!!!---].
+
+
+### Random sampling from a predified [menge]?
+
+Suppose we have ten beakers in Daphnia mortality test and want to assign them randomly to ten positions on our lab bench (we do this to avoid problems with edge effects).
+
+We could let R decide for us and draw random positions.
+
+The general function for this `sample()`:
+
+```{r}
+sample(1:10)
+```
+
+This randomly shuffles the ten positions. So the first beaker goes to position 8, the second to 10 and so on.
+
+If we repeat this 
+
+```{r}
+sample(1:10)
+```
+
+we get a different result, because of random draws.
+However, this your computer is a machine and therefore generates only pseudo-random numbers.
+We can fix and replicate the random numbers of we specify a start point for the random number generator (RNG).
+We do this with the `set.seed()` function.
+
+```{r}
+set.seed(1234)
+sample(1:10)
+```
+
+
+If we repeat this with exactly the same start point of the RNG (`set.seed(1234)`) we get the same numbers:
+
+```{r}
+set.seed(1234)
+sample(1:10)
+```
+
+The argument of set.seed can be every integer. This function is especially useful if your code contains random sampling and you want someoneelse to exactly produce the same results as you.
+
+
+

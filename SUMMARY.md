@@ -12,6 +12,8 @@
     * [Data types](rintro/types.md)
     * [Data structures](rintro/structures.md)
     * [Reading / Writing data](rintro/read_data.md)
+    * [Generating data](rintro/gendata.md)
+    * [Basic Plotting](rintro/plot.md)
     * [Working with data](rintro/work.md)
     * [Linear regression](rintro/regression.md)
     * [Other resources](rintro/r_resources.md)
