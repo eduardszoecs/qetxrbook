@@ -6,10 +6,10 @@ knitr::opts_chunk$set(echo = TRUE)
 
 If you don't have data you can make up some data for yourself ;)
 Seriously, this is very helpful when doing simulations. 
-We will use these techniques in the parametric bootstrap for Species Sensitivity Distributions (SSDS) [---!!!Link here!!!---].
+We will use these techniques in the parametric bootstrap for Species Sensitivity Distributions (SSDs) [---!!!Link here!!!---].
 
 
-### Random sampling from a predified [menge]?
+### Random sampling from a predified vector?
 
 Suppose we have ten beakers in Daphnia mortality test and want to assign them randomly to ten positions on our lab bench (we do this to avoid problems with edge effects).
 
@@ -48,6 +48,42 @@ sample(1:10)
 ```
 
 The argument of set.seed can be every integer. This function is especially useful if your code contains random sampling and you want someoneelse to exactly produce the same results as you.
+
+
+If you want to assign your experimental units randomly to two treatments you can also use `sample()`.
+
+Here I assign the ten experimental units to different treatments:
+
+```{r}
+sample(x = c('Control', 'Treatment1'), size = 10, replace = TRUE)
+```
+
+Note, that we need to add `replace=TRUE`, because x is only of length 2, but we request ten samples (try what happens if you omit the replace argument).
+
+
+
+### Random sampling from a distribution.
+
+We can also draw random samples from distributions.
+
+Here I draw ten samples from a normal distribution with mean 5 and a standard deviation of 1 [=N(5, 1)].
+```{r}
+rnorm(n = 10, mean = 5, sd = 1)
+```
+
+Similarily for counts from a poisson distributikon with mean 5 [P(5)]:
+
+```{r}
+rpois(n = 10, lambda = 5)
+```
+
+
+Or if we want to simulate flips of coins, the binomial distribution [Bin(1, 0.5)]:
+
+```{r}
+rbinom(n = 10, size = 1, prob = 0.5)
+```
+
 
 
 

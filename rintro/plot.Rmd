@@ -4,4 +4,40 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Basic Plotting
 
-In this chapter 
+In this chapter we will explore the basic (but powerful) plotting capabilities of R. 
+I later chapters I will also use the plotting system of ggplot [---!!!link!!!---]. 
+However, I refer readers to [---!!!link source!!!---] for an introdution to ggplot.
+
+
+### Plotting the distribution of a variable
+
+First I generate 100 random data points from a N(5, 2) distribution.
+
+```{r}
+set.seed(123)
+norm_vec <- rnorm(100, 5, 2)
+```
+
+One of the best method to plot distributions is a histogramm:
+
+```{r}
+hist(norm_vec)
+```
+
+Note, that the number of bars is automatically computed by R.
+However, we can change this and increase the number of bars to show more details:
+
+```{r}
+hist(norm_vec, breaks = 40)
+```
+
+or less bars, where we loose information.
+
+```{r}
+hist(norm_vec, breaks = 5)
+```
+
+
+Note, freq = FALSE => total area of histogramm is 1
+
+
