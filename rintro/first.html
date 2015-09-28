@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Introduction to R | Quantitative Ecotoxicology with R</title>
+        <title>First steps | Quantitative Ecotoxicology with R</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.3.0">
@@ -25,10 +25,10 @@
         
     
     
-    <link rel="next" href="../rintro/rstudio.html" />
+    <link rel="next" href="../rintro/types.html" />
     
     
-    <link rel="prev" href="../preface/packages.html" />
+    <link rel="prev" href="../rintro/help.html" />
     
 
         
@@ -36,7 +36,7 @@
     <body>
         
         
-    <div class="book" data-level="2" data-basepath=".." data-revision="Mon Sep 28 2015 14:28:56 GMT+0200 (CEST)">
+    <div class="book" data-level="2.3" data-basepath=".." data-revision="Mon Sep 28 2015 14:28:56 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -132,7 +132,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2" data-path="rintro/intro.html">
+        <li class="chapter " data-level="2" data-path="rintro/intro.html">
             
                 
                     <a href="../rintro/intro.html">
@@ -178,7 +178,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.3" data-path="rintro/first.html">
+        <li class="chapter active" data-level="2.3" data-path="rintro/first.html">
             
                 
                     <a href="../rintro/first.html">
@@ -594,10 +594,85 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h2 id="introduction-to-r">Introduction to R</h2>
-<p> <a href="http://knowyourmeme.com/photos/502491-beep-boop" target="_blank"><img src="http://i3.kym-cdn.com/photos/images/original/000/502/491/990.jpg"></a></p>
-<p>As you might have noticed, using R means programming R.
-This first chapter is only dedicated to make you familiar with basic R programming.</p>
+                        <h2 id="first-steps-in-r">First steps in R</h2>
+<p>R is a powerful calculator with standard arithmetic operators:</p>
+<pre><code class="lang-r"><span class="hljs-comment"># Addition</span>
+<span class="hljs-number">1</span> + <span class="hljs-number">6</span>
+</code></pre>
+<pre><code>## [1] 7
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># Multiplication</span>
+<span class="hljs-number">2</span> * <span class="hljs-number">6</span>
+</code></pre>
+<pre><code>## [1] 12
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># multiplication and division first, then addition and subtraction</span>
+<span class="hljs-number">2</span> * <span class="hljs-number">6</span> + <span class="hljs-number">1</span>
+</code></pre>
+<pre><code>## [1] 13
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># use of brackets</span>
+<span class="hljs-number">2</span> * (<span class="hljs-number">6</span> + <span class="hljs-number">1</span>)
+</code></pre>
+<pre><code>## [1] 14
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># square root</span>
+sqrt(<span class="hljs-number">16</span>)
+</code></pre>
+<pre><code>## [1] 4
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># powers</span>
+<span class="hljs-number">16</span>^<span class="hljs-number">0.5</span>
+</code></pre>
+<pre><code>## [1] 4
+</code></pre><pre><code class="lang-r"><span class="hljs-number">2</span>^<span class="hljs-number">2</span>
+</code></pre>
+<pre><code>## [1] 4
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># natural log</span>
+log(<span class="hljs-number">10</span>)
+</code></pre>
+<pre><code>## [1] 2.302585
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># decadic log</span>
+log10(<span class="hljs-number">10</span>)
+</code></pre>
+<pre><code>## [1] 1
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># log to base of 4</span>
+log(<span class="hljs-number">10</span>, <span class="hljs-number">4</span>)
+</code></pre>
+<pre><code>## [1] 1.660964
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># exponential</span>
+exp(<span class="hljs-number">2</span>)
+</code></pre>
+<pre><code>## [1] 7.389056
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># pi is a built-in constant</span>
+pi
+</code></pre>
+<pre><code>## [1] 3.141593
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># but not e</span>
+e^<span class="hljs-number">2</span>
+</code></pre>
+<pre><code>## Error in eval(expr, envir, enclos): object &apos;e&apos; not found
+</code></pre><p>If we want to refer to a result later on, we can give them a name.</p>
+<pre><code class="lang-r">a &lt;- <span class="hljs-number">1</span> + <span class="hljs-number">6</span>
+</code></pre>
+<p>Here I <em>assign</em> (<code>&lt;-</code>) the result of <code>1 + 6</code> to an <em>object</em> named <code>a</code>.
+If you just type the name into the console R shows whats inside this object:</p>
+<pre><code class="lang-r">a
+</code></pre>
+<pre><code>## [1] 7
+</code></pre><p>You can also do calculations with this object:</p>
+<pre><code class="lang-r"><span class="hljs-number">2</span> * a
+</code></pre>
+<pre><code>## [1] 14
+</code></pre><p>Note, that R will overwrite objects:</p>
+<pre><code class="lang-r">a
+</code></pre>
+<pre><code>## [1] 7
+</code></pre><pre><code class="lang-r">a &lt;- <span class="hljs-number">2</span>*a
+a
+</code></pre>
+<pre><code>## [1] 14
+</code></pre><p>If R doesn&apos;t know about an object you get the following error:</p>
+<pre><code class="lang-r">b
+</code></pre>
+<pre><code>## Error in eval(expr, envir, enclos): object &apos;b&apos; not found
+</code></pre><p>which says: <em>&quot;I looked for the object &apos;b&apos;, but could not find it&quot;</em>&quot;.</p>
+<p>You can see objects that are available in the <code>Environment</code> pane of RStudio. Alternatively you can use the <code>ls()</code> function.</p>
 
                     
                     </section>
@@ -608,10 +683,10 @@ This first chapter is only dedicated to make you familiar with basic R programmi
         </div>
 
         
-        <a href="../preface/packages.html" class="navigation navigation-prev " aria-label="Previous page: Install additional packages"><i class="fa fa-angle-left"></i></a>
+        <a href="../rintro/help.html" class="navigation navigation-prev " aria-label="Previous page: Getting help"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../rintro/rstudio.html" class="navigation navigation-next " aria-label="Next page: Introduction to RStudio"><i class="fa fa-angle-right"></i></a>
+        <a href="../rintro/types.html" class="navigation navigation-next " aria-label="Next page: Data types"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

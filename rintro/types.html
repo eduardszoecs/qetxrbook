@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Basic data structures &amp; functions | Quantitative Ecotoxicology with R</title>
+        <title>Data types | Quantitative Ecotoxicology with R</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.3.0">
@@ -25,10 +25,10 @@
         
     
     
-    <link rel="next" href="../rintro/read_data.html" />
+    <link rel="next" href="../rintro/structures.html" />
     
     
-    <link rel="prev" href="../rintro/help.html" />
+    <link rel="prev" href="../rintro/first.html" />
     
 
         
@@ -36,7 +36,7 @@
     <body>
         
         
-    <div class="book" data-level="2.3" data-basepath=".." data-revision="Thu Sep 24 2015 10:58:32 GMT+0200 (CEST)">
+    <div class="book" data-level="2.4" data-basepath=".." data-revision="Mon Sep 28 2015 14:28:56 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -178,29 +178,59 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.3" data-path="rintro/basic.html">
+        <li class="chapter " data-level="2.3" data-path="rintro/first.html">
             
                 
-                    <a href="../rintro/basic.html">
+                    <a href="../rintro/first.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>2.3.</b>
                         
-                        Basic data structures &amp; functions
+                        First steps
                     </a>
             
             
         </li>
     
-        <li class="chapter " data-level="2.4" data-path="rintro/read_data.html">
+        <li class="chapter active" data-level="2.4" data-path="rintro/types.html">
+            
+                
+                    <a href="../rintro/types.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        Data types
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="rintro/structures.html">
+            
+                
+                    <a href="../rintro/structures.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.</b>
+                        
+                        Data structures
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="rintro/read_data.html">
             
                 
                     <a href="../rintro/read_data.html">
                 
                         <i class="fa fa-check"></i>
                         
-                            <b>2.4.</b>
+                            <b>2.6.</b>
                         
                         Reading / Writing data
                     </a>
@@ -208,23 +238,53 @@
             
         </li>
     
-        <li class="chapter " data-level="2.5" data-path="rintro/work.html">
+        <li class="chapter " data-level="2.7" data-path="rintro/gendata.html">
             
-            <span><b>2.5.</b> Working with data</span>
+                
+                    <a href="../rintro/gendata.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.7.</b>
+                        
+                        Generating data
+                    </a>
             
             
         </li>
     
-        <li class="chapter " data-level="2.6" data-path="rintro/regression.html">
+        <li class="chapter " data-level="2.8" data-path="rintro/plot.html">
             
-            <span><b>2.6.</b> Linear regression</span>
+                
+                    <a href="../rintro/plot.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.8.</b>
+                        
+                        Basic Plotting
+                    </a>
             
             
         </li>
     
-        <li class="chapter " data-level="2.7" data-path="rintro/r_resources.html">
+        <li class="chapter " data-level="2.9" data-path="rintro/work.html">
             
-            <span><b>2.7.</b> Other resources</span>
+            <span><b>2.9.</b> Working with data</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10" data-path="rintro/regression.html">
+            
+            <span><b>2.10.</b> Linear regression</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11" data-path="rintro/r_resources.html">
+            
+            <span><b>2.11.</b> Other resources</span>
             
             
         </li>
@@ -534,93 +594,7 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="-r-setup-include-false">```{r setup, include=FALSE}</h1>
-<p>knitr::opts_chunk$set(echo = TRUE)</p>
-<h1 id="-status-in-works">! status : in works</h1>
-<pre><code>
-## First steps in R
-
-R is a powerful calculator with standard arithmetic operators:
-
-
-```r
-# Addition
-1 + 6
-</code></pre><pre><code>## [1] 7
-</code></pre><pre><code class="lang-r"><span class="hljs-comment"># Multiplication</span>
-<span class="hljs-number">2</span> * <span class="hljs-number">6</span>
-</code></pre>
-<pre><code>## [1] 12
-</code></pre><pre><code class="lang-r"><span class="hljs-comment"># multiplication and division first, then addition and subtraction</span>
-<span class="hljs-number">2</span> * <span class="hljs-number">6</span> + <span class="hljs-number">1</span>
-</code></pre>
-<pre><code>## [1] 13
-</code></pre><pre><code class="lang-r"><span class="hljs-comment"># use of brackets</span>
-<span class="hljs-number">2</span> * (<span class="hljs-number">6</span> + <span class="hljs-number">1</span>)
-</code></pre>
-<pre><code>## [1] 14
-</code></pre><pre><code class="lang-r"><span class="hljs-comment"># square root</span>
-sqrt(<span class="hljs-number">16</span>)
-</code></pre>
-<pre><code>## [1] 4
-</code></pre><pre><code class="lang-r"><span class="hljs-comment"># powers</span>
-<span class="hljs-number">16</span>^<span class="hljs-number">0.5</span>
-</code></pre>
-<pre><code>## [1] 4
-</code></pre><pre><code class="lang-r"><span class="hljs-number">2</span>^<span class="hljs-number">2</span>
-</code></pre>
-<pre><code>## [1] 4
-</code></pre><pre><code class="lang-r"><span class="hljs-comment"># natural log</span>
-log(<span class="hljs-number">10</span>)
-</code></pre>
-<pre><code>## [1] 2.302585
-</code></pre><pre><code class="lang-r"><span class="hljs-comment"># decadic log</span>
-log10(<span class="hljs-number">10</span>)
-</code></pre>
-<pre><code>## [1] 1
-</code></pre><pre><code class="lang-r"><span class="hljs-comment"># log to base of 4</span>
-log(<span class="hljs-number">10</span>, <span class="hljs-number">4</span>)
-</code></pre>
-<pre><code>## [1] 1.660964
-</code></pre><pre><code class="lang-r"><span class="hljs-comment"># exponential</span>
-exp(<span class="hljs-number">2</span>)
-</code></pre>
-<pre><code>## [1] 7.389056
-</code></pre><pre><code class="lang-r"><span class="hljs-comment"># pi is a built-in constant</span>
-pi
-</code></pre>
-<pre><code>## [1] 3.141593
-</code></pre><pre><code class="lang-r"><span class="hljs-comment"># but not e</span>
-e^<span class="hljs-number">2</span>
-</code></pre>
-<pre><code>## Error in eval(expr, envir, enclos): object &apos;e&apos; not found
-</code></pre><p>If we want to refer to a result later on, we can give them a name.</p>
-<pre><code class="lang-r">a &lt;- <span class="hljs-number">1</span> + <span class="hljs-number">6</span>
-</code></pre>
-<p>Here I <em>assign</em> (<code>&lt;-</code>) the result of <code>1 + 6</code> to an <em>object</em> named <code>a</code>.
-If you just type the name into the console R shows whats inside this object:</p>
-<pre><code class="lang-r">a
-</code></pre>
-<pre><code>## [1] 7
-</code></pre><p>You can also do calculations with this object:</p>
-<pre><code class="lang-r"><span class="hljs-number">2</span> * a
-</code></pre>
-<pre><code>## [1] 14
-</code></pre><p>Note, that R will overwrite objects:</p>
-<pre><code class="lang-r">a
-</code></pre>
-<pre><code>## [1] 7
-</code></pre><pre><code class="lang-r">a &lt;- <span class="hljs-number">2</span>*a
-a
-</code></pre>
-<pre><code>## [1] 14
-</code></pre><p>If R doesn&apos;t know about an object you get the following error:</p>
-<pre><code class="lang-r">b
-</code></pre>
-<pre><code>## Error in eval(expr, envir, enclos): object &apos;b&apos; not found
-</code></pre><p>which says: <em>&quot;I looked for the object &apos;b&apos;, but could not find it&quot;</em>&quot;.</p>
-<p>You can see objects that are available in the <code>Environment</code> pane of RStudio. Alternatively you can use the <code>ls()</code> function.</p>
-<h2 id="data-types-in-r">Data types in R</h2>
+                        <h2 id="data-types-in-r">Data types in R</h2>
 <p>Before starting with data analyses we need to know which types of data R can handle.
 Here we discuss only the basic types <code>numeric</code>, <code>integer</code>, <code>character</code> and <code>logical</code>.</p>
 <h3 id="numerics">Numerics</h3>
@@ -794,213 +768,6 @@ as.numeric(char)
 </code></pre>
 <pre><code>## [1] &quot;A&quot; &quot;B&quot;
 </code></pre><p>Factors are useful for categorical data and we will encounter them later on when dealing with linear models. For now just keep in mind that factors are special characters, with special properties.</p>
-<h2 id="data-structures-in-r">Data structures in R</h2>
-<h3 id="vectors">Vectors</h3>
-<p>Vectors are the basic data structure in R. 
-Vectors are one-dimensional structures (remember linear algebra from school?) and all numbers that we typed above were vectors with the lenght of one.
-We can query the length of a vector using <code>length()</code></p>
-<pre><code class="lang-r"><span class="hljs-comment"># this is a vector of lenght 1</span>
-<span class="hljs-number">25</span>
-</code></pre>
-<pre><code>## [1] 25
-</code></pre><pre><code class="lang-r">length(<span class="hljs-number">25</span>)
-</code></pre>
-<pre><code>## [1] 1
-</code></pre><p>We can create vectors using the <code>c()</code> function (short for <em>combine</em>):</p>
-<pre><code class="lang-r">num_vec &lt;- c(<span class="hljs-number">25</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">6</span>)
-num_vec
-</code></pre>
-<pre><code>## [1] 25  1  3  6
-</code></pre><pre><code class="lang-r">length(num_vec)
-</code></pre>
-<pre><code>## [1] 4
-</code></pre><p>Or logical vectors:</p>
-<pre><code class="lang-r">log_vec &lt;- c(<span class="hljs-literal">TRUE</span>, <span class="hljs-literal">FALSE</span>, <span class="hljs-literal">FALSE</span>, <span class="hljs-literal">TRUE</span>, <span class="hljs-literal">TRUE</span>)
-log_vec
-</code></pre>
-<pre><code>## [1]  TRUE FALSE FALSE  TRUE  TRUE
-</code></pre><pre><code class="lang-r">length(log_vec)
-</code></pre>
-<pre><code>## [1] 5
-</code></pre><pre><code class="lang-r">class(log_vec)
-</code></pre>
-<pre><code>## [1] &quot;logical&quot;
-</code></pre><p>Note that all elements must be of the same type. 
-If we combine elements from different type the whole vector will be coerced to the lowest type (<code>logical</code> &gt; <code>integer</code> &gt; <code>numeric</code> &gt; <code>character</code>):</p>
-<pre><code class="lang-r">a &lt;- c(<span class="hljs-literal">TRUE</span>, <span class="hljs-number">2L</span>, <span class="hljs-number">2.5</span>, <span class="hljs-string">&apos;hello&apos;</span>)
-a
-</code></pre>
-<pre><code>## [1] &quot;TRUE&quot;  &quot;2&quot;     &quot;2.5&quot;   &quot;hello&quot;
-</code></pre><pre><code class="lang-r">class(a)
-</code></pre>
-<pre><code>## [1] &quot;character&quot;
-</code></pre><pre><code class="lang-r">b &lt;- c(<span class="hljs-literal">TRUE</span>, <span class="hljs-number">2L</span>, <span class="hljs-number">2.5</span>)
-b
-</code></pre>
-<pre><code>## [1] 1.0 2.0 2.5
-</code></pre><pre><code class="lang-r">class(b)
-</code></pre>
-<pre><code>## [1] &quot;numeric&quot;
-</code></pre><pre><code class="lang-r">c &lt;- c(<span class="hljs-literal">FALSE</span>, <span class="hljs-string">&apos;hello&apos;</span>)
-class(c)
-</code></pre>
-<pre><code>## [1] &quot;character&quot;
-</code></pre><p>We can also do math with vectors:</p>
-<pre><code class="lang-r">num_vec &lt;- c(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>)
-num_vec
-</code></pre>
-<pre><code>## [1] 1 2 3
-</code></pre><pre><code class="lang-r"><span class="hljs-comment"># elementwise addition</span>
-num_vec + <span class="hljs-number">2</span>
-</code></pre>
-<pre><code>## [1] 3 4 5
-</code></pre><pre><code class="lang-r"><span class="hljs-comment"># elementwise power</span>
-num_vec^<span class="hljs-number">2</span>
-</code></pre>
-<pre><code>## [1] 1 4 9
-</code></pre><pre><code class="lang-r"><span class="hljs-comment"># sum of vector elements</span>
-sum(num_vec)
-</code></pre>
-<pre><code>## [1] 6
-</code></pre><pre><code class="lang-r"><span class="hljs-comment"># mean of vector</span>
-sum(num_vec) / length(num_vec)
-</code></pre>
-<pre><code>## [1] 2
-</code></pre><pre><code class="lang-r"><span class="hljs-comment"># or directly suing the mean() function</span>
-mean(num_vec)
-</code></pre>
-<pre><code>## [1] 2
-</code></pre><p>Often, we need to create sequences of numbers.
-Here the <code>seq()</code> function is handy, it take at least two arguments <code>from</code> and <code>to</code></p>
-<pre><code class="lang-r"><span class="hljs-comment"># sequence from 2 to 10</span>
-seq(from = <span class="hljs-number">2</span>, to = <span class="hljs-number">10</span>)
-</code></pre>
-<pre><code>## [1]  2  3  4  5  6  7  8  9 10
-</code></pre><pre><code class="lang-r"><span class="hljs-comment"># sequence from 10 to 3</span>
-seq(from = <span class="hljs-number">10</span>, to = <span class="hljs-number">3</span>)
-</code></pre>
-<pre><code>## [1] 10  9  8  7  6  5  4  3
-</code></pre><p>A shortcut for such sequences with steps of 1 or -1 is the colon operator <code>:</code></p>
-<pre><code class="lang-r"><span class="hljs-comment"># sequence from 2 to 10</span>
-<span class="hljs-number">2</span>:<span class="hljs-number">10</span>
-</code></pre>
-<pre><code>## [1]  2  3  4  5  6  7  8  9 10
-</code></pre><pre><code class="lang-r"><span class="hljs-comment"># sequence from 10 to 3</span>
-<span class="hljs-number">10</span>:<span class="hljs-number">3</span>
-</code></pre>
-<pre><code>## [1] 10  9  8  7  6  5  4  3
-</code></pre><p>The colon operator will be very handy later on. 
-However, <code>seq</code> is much more flexibel as we can change the stepsize</p>
-<pre><code class="lang-r"><span class="hljs-comment"># sequence from 2 to 5 in steps of 0.5</span>
-seq(from = <span class="hljs-number">2</span>, to = <span class="hljs-number">5</span>, by = <span class="hljs-number">0.5</span>)
-</code></pre>
-<pre><code>## [1] 2.0 2.5 3.0 3.5 4.0 4.5 5.0
-</code></pre><p>Or specify the length of the sequence</p>
-<pre><code class="lang-r"><span class="hljs-comment"># sequence from 2 in steps of 0.5 with length of 5</span>
-seq(from = <span class="hljs-number">2</span>, by = <span class="hljs-number">0.5</span>, length.out = <span class="hljs-number">5</span>)
-</code></pre>
-<pre><code>## [1] 2.0 2.5 3.0 3.5 4.0
-</code></pre><p>Note, that we can omit the argument names, but the R assumes that the arguments passed are in the correct order:</p>
-<pre><code class="lang-r"><span class="hljs-comment"># sequence from 2 to 5 in steps of 0.5</span>
-seq(<span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">0.5</span>)
-</code></pre>
-<pre><code>## [1] 2.0 2.5 3.0 3.5 4.0 4.5 5.0
-</code></pre><p>Howevr this does not give the inteded results, because 5 is interpreted as <code>by</code> argument (third position).</p>
-<pre><code class="lang-r"><span class="hljs-comment"># intended result: sequence from 2 in steps of 0.5 with length of 5</span>
-seq(<span class="hljs-number">2</span>, <span class="hljs-number">0.5</span>, <span class="hljs-number">5</span>)
-</code></pre>
-<pre><code>## Error in seq.default(2, 0.5, 5): wrong sign in &apos;by&apos; argument
-</code></pre><p>Another useful fucntion is the replicate function <code>rep()</code>:</p>
-<pre><code class="lang-r"><span class="hljs-comment"># repeats the vector hello 3 times</span>
-rep(<span class="hljs-string">&apos;hello&apos;</span>, times = <span class="hljs-number">3</span>)
-</code></pre>
-<pre><code>## [1] &quot;hello&quot; &quot;hello&quot; &quot;hello&quot;
-</code></pre><pre><code class="lang-r"><span class="hljs-comment"># repeats the vector c(&apos;hello&apos;, &apos;world&apos;) 3 times</span>
-rep(c(<span class="hljs-string">&apos;hello&apos;</span>, <span class="hljs-string">&apos;world&apos;</span>), times = <span class="hljs-number">3</span>)
-</code></pre>
-<pre><code>## [1] &quot;hello&quot; &quot;world&quot; &quot;hello&quot; &quot;world&quot; &quot;hello&quot; &quot;world&quot;
-</code></pre><p>If we want to repeat each vector element we need to use the <code>each</code> argument:</p>
-<pre><code class="lang-r"><span class="hljs-comment"># repeats each element of the vector c(&apos;hello&apos;, &apos;world&apos;) 3 times</span>
-rep(c(<span class="hljs-string">&apos;hello&apos;</span>, <span class="hljs-string">&apos;world&apos;</span>), each = <span class="hljs-number">3</span>)
-</code></pre>
-<pre><code>## [1] &quot;hello&quot; &quot;hello&quot; &quot;hello&quot; &quot;world&quot; &quot;world&quot; &quot;world&quot;
-</code></pre><h3 id="matrices">Matrices</h3>
-<p>Matrices are the 2-dimensional extension of vectors. </p>
-<p>We can combine two vectors to a matrix using <code>cbind</code> (combine by columns) or <code>rbind</code> combine by rows:</p>
-<pre><code class="lang-r">vec1 &lt;- <span class="hljs-number">1</span>:<span class="hljs-number">5</span>
-vec2 &lt;- rep(<span class="hljs-number">9</span>, <span class="hljs-number">5</span>)
-<span class="hljs-comment"># combine by columns</span>
-mat1 &lt;- cbind(vec1, vec2)
-mat1
-</code></pre>
-<pre><code>##      vec1 vec2
-## [1,]    1    9
-## [2,]    2    9
-## [3,]    3    9
-## [4,]    4    9
-## [5,]    5    9
-</code></pre><pre><code class="lang-r"><span class="hljs-comment"># combine by rows</span>
-mat2 &lt;- rbind(vec1, vec2)
-mat2
-</code></pre>
-<pre><code>##      [,1] [,2] [,3] [,4] [,5]
-## vec1    1    2    3    4    5
-## vec2    9    9    9    9    9
-</code></pre><pre><code class="lang-r">class(mat2)
-</code></pre>
-<pre><code>## [1] &quot;matrix&quot;
-</code></pre><p>Similar, to the <code>length</code> function for vectors, there is a dimension function for matrices</p>
-<pre><code class="lang-r">dim(mat1) <span class="hljs-comment"># 5 rows, 2 columns</span>
-</code></pre>
-<pre><code>## [1] 5 2
-</code></pre><pre><code class="lang-r">dim(mat2) <span class="hljs-comment"># 2 rows, 5 columns</span>
-</code></pre>
-<pre><code>## [1] 2 5
-</code></pre><p>As with vectors, all elements in a matrix must be of same type. If not the are coerced downwards.</p>
-<pre><code class="lang-r">cbind(c(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>), 
-  c(<span class="hljs-string">&apos;hello&apos;</span>, <span class="hljs-string">&apos;world&apos;</span>))
-</code></pre>
-<pre><code>##      [,1] [,2]   
-## [1,] &quot;1&quot;  &quot;hello&quot;
-## [2,] &quot;3&quot;  &quot;world&quot;
-</code></pre><p>An we can do elementwise arithmetic</p>
-<pre><code class="lang-r">mat1 + <span class="hljs-number">10</span>
-</code></pre>
-<pre><code>##      vec1 vec2
-## [1,]   11   19
-## [2,]   12   19
-## [3,]   13   19
-## [4,]   14   19
-## [5,]   15   19
-</code></pre><pre><code class="lang-r">sqrt(mat1)
-</code></pre>
-<pre><code>##          vec1 vec2
-## [1,] 1.000000    3
-## [2,] 1.414214    3
-## [3,] 1.732051    3
-## [4,] 2.000000    3
-## [5,] 2.236068    3
-</code></pre><p>Matrices can be also created with the <code>matrix()</code> function:</p>
-<pre><code class="lang-r">rot &lt;- matrix(c(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, 
-                <span class="hljs-number">1</span>, <span class="hljs-number">0</span>), ncol = <span class="hljs-number">2</span>, byrow = <span class="hljs-literal">TRUE</span>)
-</code></pre>
-<h3 id="data-frames">Data.frames</h3>
-<p>The constrained of matrices having all data of same type is not very appealing for data analysis, where we might have different variable types in one data sheet (e.g numeric descriptors and categorical descriptors). 
-Nevertheless, matrices and matrix algebra playa a central role in R&apos;s computations.</p>
-<p>A <code>data.frame</code> in another, more flexibel, 2-dimensional data structure. 
-In fact, it will be your mostly used structure. 
-<code>data.frames</code> allow different types of variables, but all must be of the same lenght.</p>
-<p>You can create data.frames using the <code>data.frame()</code> function:</p>
-<pre><code class="lang-r">df &lt;- data.frame(<span class="hljs-number">1</span>:<span class="hljs-number">5</span>, c(<span class="hljs-string">&apos;A&apos;</span>, <span class="hljs-string">&apos;A&apos;</span>, <span class="hljs-string">&apos;A&apos;</span>, <span class="hljs-string">&apos;B&apos;</span>, <span class="hljs-string">&apos;B&apos;</span>))
-df
-</code></pre>
-<pre><code>##   X1.5 c..A....A....A....B....B..
-## 1    1                          A
-## 2    2                          A
-## 3    3                          A
-## 4    4                          B
-## 5    5                          B
-</code></pre><h3 id="lists">Lists</h3>
 
                     
                     </section>
@@ -1011,10 +778,10 @@ df
         </div>
 
         
-        <a href="../rintro/help.html" class="navigation navigation-prev " aria-label="Previous page: Getting help"><i class="fa fa-angle-left"></i></a>
+        <a href="../rintro/first.html" class="navigation navigation-prev " aria-label="Previous page: First steps"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../rintro/read_data.html" class="navigation navigation-next " aria-label="Next page: Reading / Writing data"><i class="fa fa-angle-right"></i></a>
+        <a href="../rintro/structures.html" class="navigation navigation-next " aria-label="Next page: Data structures"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

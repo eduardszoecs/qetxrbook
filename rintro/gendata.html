@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Introduction to R | Quantitative Ecotoxicology with R</title>
+        <title>Generating data | Quantitative Ecotoxicology with R</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.3.0">
@@ -25,10 +25,10 @@
         
     
     
-    <link rel="next" href="../rintro/rstudio.html" />
+    <link rel="next" href="../rintro/plot.html" />
     
     
-    <link rel="prev" href="../preface/packages.html" />
+    <link rel="prev" href="../rintro/read_data.html" />
     
 
         
@@ -36,7 +36,7 @@
     <body>
         
         
-    <div class="book" data-level="2" data-basepath=".." data-revision="Mon Sep 28 2015 14:28:56 GMT+0200 (CEST)">
+    <div class="book" data-level="2.7" data-basepath=".." data-revision="Mon Sep 28 2015 14:28:56 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -132,7 +132,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2" data-path="rintro/intro.html">
+        <li class="chapter " data-level="2" data-path="rintro/intro.html">
             
                 
                     <a href="../rintro/intro.html">
@@ -238,7 +238,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.7" data-path="rintro/gendata.html">
+        <li class="chapter active" data-level="2.7" data-path="rintro/gendata.html">
             
                 
                     <a href="../rintro/gendata.html">
@@ -594,11 +594,59 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h2 id="introduction-to-r">Introduction to R</h2>
-<p> <a href="http://knowyourmeme.com/photos/502491-beep-boop" target="_blank"><img src="http://i3.kym-cdn.com/photos/images/original/000/502/491/990.jpg"></a></p>
-<p>As you might have noticed, using R means programming R.
-This first chapter is only dedicated to make you familiar with basic R programming.</p>
-
+                        <h2 id="generating-data">Generating data</h2>
+<p>If you don&apos;t have data you can make up some data for yourself ;)
+Seriously, this is very helpful when doing simulations. 
+We will use these techniques in the parametric bootstrap for Species Sensitivity Distributions (SSDs) [---!!!Link here!!!---].</p>
+<h3 id="random-sampling-from-a-predified-vector">Random sampling from a predified vector?</h3>
+<p>Suppose we have ten beakers in Daphnia mortality test and want to assign them randomly to ten positions on our lab bench (we do this to avoid problems with edge effects).</p>
+<p>We could let R decide for us and draw random positions.</p>
+<p>The general function for this <code>sample()</code>:</p>
+<pre><code class="lang-r">sample(<span class="hljs-number">1</span>:<span class="hljs-number">10</span>)
+</code></pre>
+<pre><code>##  [1] 10  3  6  2  1  8  7  4  9  5
+</code></pre><p>This randomly shuffles the ten positions. So the first beaker goes to position 8, the second to 10 and so on.</p>
+<p>If we repeat this </p>
+<pre><code class="lang-r">sample(<span class="hljs-number">1</span>:<span class="hljs-number">10</span>)
+</code></pre>
+<pre><code>##  [1]  4 10  6  5  1  7  8  9  3  2
+</code></pre><p>we get a different result, because of random draws.
+However, this your computer is a machine and therefore generates only pseudo-random numbers.
+We can fix and replicate the random numbers of we specify a start point for the random number generator (RNG).
+We do this with the <code>set.seed()</code> function.</p>
+<pre><code class="lang-r">set.seed(<span class="hljs-number">1234</span>)
+sample(<span class="hljs-number">1</span>:<span class="hljs-number">10</span>)
+</code></pre>
+<pre><code>##  [1]  2  6  5  8  9  4  1  7 10  3
+</code></pre><p>If we repeat this with exactly the same start point of the RNG (<code>set.seed(1234)</code>) we get the same numbers:</p>
+<pre><code class="lang-r">set.seed(<span class="hljs-number">1234</span>)
+sample(<span class="hljs-number">1</span>:<span class="hljs-number">10</span>)
+</code></pre>
+<pre><code>##  [1]  2  6  5  8  9  4  1  7 10  3
+</code></pre><p>The argument of set.seed can be every integer. This function is especially useful if your code contains random sampling and you want someoneelse to exactly produce the same results as you.</p>
+<p>If you want to assign your experimental units randomly to two treatments you can also use <code>sample()</code>.</p>
+<p>Here I assign the ten experimental units to different treatments:</p>
+<pre><code class="lang-r">sample(x = c(<span class="hljs-string">&apos;Control&apos;</span>, <span class="hljs-string">&apos;Treatment1&apos;</span>), size = <span class="hljs-number">10</span>, replace = <span class="hljs-literal">TRUE</span>)
+</code></pre>
+<pre><code>##  [1] &quot;Treatment1&quot; &quot;Treatment1&quot; &quot;Control&quot;    &quot;Treatment1&quot; &quot;Control&quot;   
+##  [6] &quot;Treatment1&quot; &quot;Control&quot;    &quot;Control&quot;    &quot;Control&quot;    &quot;Control&quot;
+</code></pre><p>Note, that we need to add <code>replace=TRUE</code>, because x is only of length 2, but we request ten samples (try what happens if you omit the replace argument).</p>
+<h3 id="random-sampling-from-a-distribution">Random sampling from a distribution.</h3>
+<p>We can also draw random samples from distributions.</p>
+<p>Here I draw ten samples from a normal distribution with mean 5 and a standard deviation of 1 [=N(5, 1)].</p>
+<pre><code class="lang-r">rnorm(n = <span class="hljs-number">10</span>, mean = <span class="hljs-number">5</span>, sd = <span class="hljs-number">1</span>)
+</code></pre>
+<pre><code>##  [1] 4.522807 4.001614 4.223746 5.064459 5.959494 4.889715 4.488990
+##  [8] 4.088805 4.162828 7.415835
+</code></pre><p>Similarily for counts from a poisson distributikon with mean 5 [P(5)]:</p>
+<pre><code class="lang-r">rpois(n = <span class="hljs-number">10</span>, lambda = <span class="hljs-number">5</span>)
+</code></pre>
+<pre><code>##  [1] 5 6 4 6 4 5 6 5 3 7
+</code></pre><p>Or if we want to simulate flips of coins, the binomial distribution [Bin(1, 0.5)]:</p>
+<pre><code class="lang-r">rbinom(n = <span class="hljs-number">10</span>, size = <span class="hljs-number">1</span>, prob = <span class="hljs-number">0.5</span>)
+</code></pre>
+<pre><code>##  [1] 0 0 1 1 0 1 0 1 0 1
+</code></pre>
                     
                     </section>
                 
@@ -608,10 +656,10 @@ This first chapter is only dedicated to make you familiar with basic R programmi
         </div>
 
         
-        <a href="../preface/packages.html" class="navigation navigation-prev " aria-label="Previous page: Install additional packages"><i class="fa fa-angle-left"></i></a>
+        <a href="../rintro/read_data.html" class="navigation navigation-prev " aria-label="Previous page: Reading / Writing data"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../rintro/rstudio.html" class="navigation navigation-next " aria-label="Next page: Introduction to RStudio"><i class="fa fa-angle-right"></i></a>
+        <a href="../rintro/plot.html" class="navigation navigation-next " aria-label="Next page: Basic Plotting"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

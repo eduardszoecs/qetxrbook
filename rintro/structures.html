@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Introduction to R | Quantitative Ecotoxicology with R</title>
+        <title>Data structures | Quantitative Ecotoxicology with R</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.3.0">
@@ -25,10 +25,10 @@
         
     
     
-    <link rel="next" href="../rintro/rstudio.html" />
+    <link rel="next" href="../rintro/read_data.html" />
     
     
-    <link rel="prev" href="../preface/packages.html" />
+    <link rel="prev" href="../rintro/types.html" />
     
 
         
@@ -36,7 +36,7 @@
     <body>
         
         
-    <div class="book" data-level="2" data-basepath=".." data-revision="Mon Sep 28 2015 14:28:56 GMT+0200 (CEST)">
+    <div class="book" data-level="2.5" data-basepath=".." data-revision="Mon Sep 28 2015 14:28:56 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -132,7 +132,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2" data-path="rintro/intro.html">
+        <li class="chapter " data-level="2" data-path="rintro/intro.html">
             
                 
                     <a href="../rintro/intro.html">
@@ -208,7 +208,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.5" data-path="rintro/structures.html">
+        <li class="chapter active" data-level="2.5" data-path="rintro/structures.html">
             
                 
                     <a href="../rintro/structures.html">
@@ -594,10 +594,281 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h2 id="introduction-to-r">Introduction to R</h2>
-<p> <a href="http://knowyourmeme.com/photos/502491-beep-boop" target="_blank"><img src="http://i3.kym-cdn.com/photos/images/original/000/502/491/990.jpg"></a></p>
-<p>As you might have noticed, using R means programming R.
-This first chapter is only dedicated to make you familiar with basic R programming.</p>
+                        <p>S</p>
+<h2 id="data-structures-in-r">Data structures in R</h2>
+<h3 id="vectors">Vectors</h3>
+<p>Vectors are the basic data structure in R. 
+Vectors are one-dimensional structures (remember linear algebra from school?) and all numbers that we typed above were vectors with the lenght of one.
+We can query the length of a vector using <code>length()</code></p>
+<pre><code class="lang-r"><span class="hljs-comment"># this is a vector of lenght 1</span>
+<span class="hljs-number">25</span>
+</code></pre>
+<pre><code>## [1] 25
+</code></pre><pre><code class="lang-r">length(<span class="hljs-number">25</span>)
+</code></pre>
+<pre><code>## [1] 1
+</code></pre><p>We can create vectors using the <code>c()</code> function (short for <em>combine</em>):</p>
+<pre><code class="lang-r">num_vec &lt;- c(<span class="hljs-number">25</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">6</span>)
+num_vec
+</code></pre>
+<pre><code>## [1] 25  1  3  6
+</code></pre><pre><code class="lang-r">length(num_vec)
+</code></pre>
+<pre><code>## [1] 4
+</code></pre><p>Or logical vectors:</p>
+<pre><code class="lang-r">log_vec &lt;- c(<span class="hljs-literal">TRUE</span>, <span class="hljs-literal">FALSE</span>, <span class="hljs-literal">FALSE</span>, <span class="hljs-literal">TRUE</span>, <span class="hljs-literal">TRUE</span>)
+log_vec
+</code></pre>
+<pre><code>## [1]  TRUE FALSE FALSE  TRUE  TRUE
+</code></pre><pre><code class="lang-r">length(log_vec)
+</code></pre>
+<pre><code>## [1] 5
+</code></pre><pre><code class="lang-r">class(log_vec)
+</code></pre>
+<pre><code>## [1] &quot;logical&quot;
+</code></pre><p>Note that all elements must be of the same type. 
+If we combine elements from different type the whole vector will be coerced to the lowest type (<code>logical</code> &gt; <code>integer</code> &gt; <code>numeric</code> &gt; <code>character</code>):</p>
+<pre><code class="lang-r">a &lt;- c(<span class="hljs-literal">TRUE</span>, <span class="hljs-number">2L</span>, <span class="hljs-number">2.5</span>, <span class="hljs-string">&apos;hello&apos;</span>)
+a
+</code></pre>
+<pre><code>## [1] &quot;TRUE&quot;  &quot;2&quot;     &quot;2.5&quot;   &quot;hello&quot;
+</code></pre><pre><code class="lang-r">class(a)
+</code></pre>
+<pre><code>## [1] &quot;character&quot;
+</code></pre><pre><code class="lang-r">b &lt;- c(<span class="hljs-literal">TRUE</span>, <span class="hljs-number">2L</span>, <span class="hljs-number">2.5</span>)
+b
+</code></pre>
+<pre><code>## [1] 1.0 2.0 2.5
+</code></pre><pre><code class="lang-r">class(b)
+</code></pre>
+<pre><code>## [1] &quot;numeric&quot;
+</code></pre><pre><code class="lang-r">c &lt;- c(<span class="hljs-literal">FALSE</span>, <span class="hljs-string">&apos;hello&apos;</span>)
+class(c)
+</code></pre>
+<pre><code>## [1] &quot;character&quot;
+</code></pre><p>We can also do math with vectors:</p>
+<pre><code class="lang-r">num_vec &lt;- c(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>)
+num_vec
+</code></pre>
+<pre><code>## [1] 1 2 3
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># elementwise addition</span>
+num_vec + <span class="hljs-number">2</span>
+</code></pre>
+<pre><code>## [1] 3 4 5
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># elementwise power</span>
+num_vec^<span class="hljs-number">2</span>
+</code></pre>
+<pre><code>## [1] 1 4 9
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># sum of vector elements</span>
+sum(num_vec)
+</code></pre>
+<pre><code>## [1] 6
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># mean of vector</span>
+sum(num_vec) / length(num_vec)
+</code></pre>
+<pre><code>## [1] 2
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># or directly suing the mean() function</span>
+mean(num_vec)
+</code></pre>
+<pre><code>## [1] 2
+</code></pre><p>Often, we need to create sequences of numbers.
+Here the <code>seq()</code> function is handy, it take at least two arguments <code>from</code> and <code>to</code></p>
+<pre><code class="lang-r"><span class="hljs-comment"># sequence from 2 to 10</span>
+seq(from = <span class="hljs-number">2</span>, to = <span class="hljs-number">10</span>)
+</code></pre>
+<pre><code>## [1]  2  3  4  5  6  7  8  9 10
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># sequence from 10 to 3</span>
+seq(from = <span class="hljs-number">10</span>, to = <span class="hljs-number">3</span>)
+</code></pre>
+<pre><code>## [1] 10  9  8  7  6  5  4  3
+</code></pre><p>A shortcut for such sequences with steps of 1 or -1 is the colon operator <code>:</code></p>
+<pre><code class="lang-r"><span class="hljs-comment"># sequence from 2 to 10</span>
+<span class="hljs-number">2</span>:<span class="hljs-number">10</span>
+</code></pre>
+<pre><code>## [1]  2  3  4  5  6  7  8  9 10
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># sequence from 10 to 3</span>
+<span class="hljs-number">10</span>:<span class="hljs-number">3</span>
+</code></pre>
+<pre><code>## [1] 10  9  8  7  6  5  4  3
+</code></pre><p>The colon operator will be very handy later on. 
+However, <code>seq</code> is much more flexibel as we can change the stepsize</p>
+<pre><code class="lang-r"><span class="hljs-comment"># sequence from 2 to 5 in steps of 0.5</span>
+seq(from = <span class="hljs-number">2</span>, to = <span class="hljs-number">5</span>, by = <span class="hljs-number">0.5</span>)
+</code></pre>
+<pre><code>## [1] 2.0 2.5 3.0 3.5 4.0 4.5 5.0
+</code></pre><p>Or specify the length of the sequence</p>
+<pre><code class="lang-r"><span class="hljs-comment"># sequence from 2 in steps of 0.5 with length of 5</span>
+seq(from = <span class="hljs-number">2</span>, by = <span class="hljs-number">0.5</span>, length.out = <span class="hljs-number">5</span>)
+</code></pre>
+<pre><code>## [1] 2.0 2.5 3.0 3.5 4.0
+</code></pre><p>Note, that we can omit the argument names, but the R assumes that the arguments passed are in the correct order:</p>
+<pre><code class="lang-r"><span class="hljs-comment"># sequence from 2 to 5 in steps of 0.5</span>
+seq(<span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">0.5</span>)
+</code></pre>
+<pre><code>## [1] 2.0 2.5 3.0 3.5 4.0 4.5 5.0
+</code></pre><p>Howevr this does not give the inteded results, because 5 is interpreted as <code>by</code> argument (third position).</p>
+<pre><code class="lang-r"><span class="hljs-comment"># intended result: sequence from 2 in steps of 0.5 with length of 5</span>
+seq(<span class="hljs-number">2</span>, <span class="hljs-number">0.5</span>, <span class="hljs-number">5</span>)
+</code></pre>
+<pre><code>## Error in seq.default(2, 0.5, 5): wrong sign in &apos;by&apos; argument
+</code></pre><p>Another useful fucntion is the replicate function <code>rep()</code>:</p>
+<pre><code class="lang-r"><span class="hljs-comment"># repeats the vector hello 3 times</span>
+rep(<span class="hljs-string">&apos;hello&apos;</span>, times = <span class="hljs-number">3</span>)
+</code></pre>
+<pre><code>## [1] &quot;hello&quot; &quot;hello&quot; &quot;hello&quot;
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># repeats the vector c(&apos;hello&apos;, &apos;world&apos;) 3 times</span>
+rep(c(<span class="hljs-string">&apos;hello&apos;</span>, <span class="hljs-string">&apos;world&apos;</span>), times = <span class="hljs-number">3</span>)
+</code></pre>
+<pre><code>## [1] &quot;hello&quot; &quot;world&quot; &quot;hello&quot; &quot;world&quot; &quot;hello&quot; &quot;world&quot;
+</code></pre><p>If we want to repeat each vector element we need to use the <code>each</code> argument:</p>
+<pre><code class="lang-r"><span class="hljs-comment"># repeats each element of the vector c(&apos;hello&apos;, &apos;world&apos;) 3 times</span>
+rep(c(<span class="hljs-string">&apos;hello&apos;</span>, <span class="hljs-string">&apos;world&apos;</span>), each = <span class="hljs-number">3</span>)
+</code></pre>
+<pre><code>## [1] &quot;hello&quot; &quot;hello&quot; &quot;hello&quot; &quot;world&quot; &quot;world&quot; &quot;world&quot;
+</code></pre><h3 id="matrices">Matrices</h3>
+<p>Matrices are the 2-dimensional extension of vectors. </p>
+<p>We can combine two vectors to a matrix using <code>cbind</code> (combine by columns) or <code>rbind</code> combine by rows:</p>
+<pre><code class="lang-r">vec1 &lt;- <span class="hljs-number">1</span>:<span class="hljs-number">5</span>
+vec2 &lt;- rep(<span class="hljs-number">9</span>, <span class="hljs-number">5</span>)
+<span class="hljs-comment"># combine by columns</span>
+mat1 &lt;- cbind(vec1, vec2)
+mat1
+</code></pre>
+<pre><code>##      vec1 vec2
+## [1,]    1    9
+## [2,]    2    9
+## [3,]    3    9
+## [4,]    4    9
+## [5,]    5    9
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># combine by rows</span>
+mat2 &lt;- rbind(vec1, vec2)
+mat2
+</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## vec1    1    2    3    4    5
+## vec2    9    9    9    9    9
+</code></pre><pre><code class="lang-r">class(mat2)
+</code></pre>
+<pre><code>## [1] &quot;matrix&quot;
+</code></pre><p>Similar, to the <code>length</code> function for vectors, there is a dimension function for matrices</p>
+<pre><code class="lang-r">dim(mat1) <span class="hljs-comment"># 5 rows, 2 columns</span>
+</code></pre>
+<pre><code>## [1] 5 2
+</code></pre><pre><code class="lang-r">dim(mat2) <span class="hljs-comment"># 2 rows, 5 columns</span>
+</code></pre>
+<pre><code>## [1] 2 5
+</code></pre><p>As with vectors, all elements in a matrix must be of same type. If not the are coerced downwards.</p>
+<pre><code class="lang-r">cbind(c(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>), 
+  c(<span class="hljs-string">&apos;hello&apos;</span>, <span class="hljs-string">&apos;world&apos;</span>))
+</code></pre>
+<pre><code>##      [,1] [,2]   
+## [1,] &quot;1&quot;  &quot;hello&quot;
+## [2,] &quot;3&quot;  &quot;world&quot;
+</code></pre><p>An we can do elementwise arithmetic</p>
+<pre><code class="lang-r">mat1 + <span class="hljs-number">10</span>
+</code></pre>
+<pre><code>##      vec1 vec2
+## [1,]   11   19
+## [2,]   12   19
+## [3,]   13   19
+## [4,]   14   19
+## [5,]   15   19
+</code></pre><pre><code class="lang-r">sqrt(mat1)
+</code></pre>
+<pre><code>##          vec1 vec2
+## [1,] 1.000000    3
+## [2,] 1.414214    3
+## [3,] 1.732051    3
+## [4,] 2.000000    3
+## [5,] 2.236068    3
+</code></pre><p>Matrices can be also created with the <code>matrix()</code> function:</p>
+<pre><code class="lang-r">rot &lt;- matrix(c(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, 
+                <span class="hljs-number">1</span>, <span class="hljs-number">0</span>), ncol = <span class="hljs-number">2</span>, byrow = <span class="hljs-literal">TRUE</span>)
+</code></pre>
+<h3 id="data-frames">Data.frames</h3>
+<p>The constrained of matrices having all data of same type is not very appealing for data analysis, where we might have different variable types in one data sheet (e.g numeric descriptors and categorical descriptors). 
+Nevertheless, matrices and matrix algebra playa a central role in R&apos;s computations.</p>
+<p>A <code>data.frame</code> in another, more flexibel, 2-dimensional data structure. 
+In fact, it will be your mostly used structure. 
+<code>data.frames</code> allow different types of variables, but all must be of the same lenght.</p>
+<p>You can create data.frames using the <code>data.frame()</code> function:</p>
+<pre><code class="lang-r">df &lt;- data.frame(<span class="hljs-number">1</span>:<span class="hljs-number">5</span>, c(<span class="hljs-string">&apos;A&apos;</span>, <span class="hljs-string">&apos;A&apos;</span>, <span class="hljs-string">&apos;A&apos;</span>, <span class="hljs-string">&apos;B&apos;</span>, <span class="hljs-string">&apos;B&apos;</span>))
+df
+</code></pre>
+<pre><code>##   X1.5 c..A....A....A....B....B..
+## 1    1                          A
+## 2    2                          A
+## 3    3                          A
+## 4    4                          B
+## 5    5                          B
+</code></pre><p>Here the column names look very ugly, so we specify them:</p>
+<pre><code class="lang-r">df &lt;- data.frame(num = <span class="hljs-number">1</span>:<span class="hljs-number">5</span>, char = c(<span class="hljs-string">&apos;A&apos;</span>, <span class="hljs-string">&apos;A&apos;</span>, <span class="hljs-string">&apos;A&apos;</span>, <span class="hljs-string">&apos;B&apos;</span>, <span class="hljs-string">&apos;B&apos;</span>))
+df
+</code></pre>
+<pre><code>##   num char
+## 1   1    A
+## 2   2    A
+## 3   3    A
+## 4   4    B
+## 5   5    B
+</code></pre><p>You can extract the column names using the <code>colnames()</code> function (and respectively <code>rownames()</code>):</p>
+<pre><code class="lang-r">colnames(df)
+</code></pre>
+<pre><code>## [1] &quot;num&quot;  &quot;char&quot;
+</code></pre><pre><code class="lang-r">rownames(df)
+</code></pre>
+<pre><code>## [1] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; &quot;5&quot;
+</code></pre><p>We looking at the output we don&apos;t know directly what type each column is. 
+<code>str()</code> is the swiss knife when we want to investigate the structure of an R Object:</p>
+<pre><code class="lang-r">str(df)
+</code></pre>
+<pre><code>## &apos;data.frame&apos;:    5 obs. of  2 variables:
+##  $ num : int  1 2 3 4 5
+##  $ char: Factor w/ 2 levels &quot;A&quot;,&quot;B&quot;: 1 1 1 2 2
+</code></pre><p>Here we see that the data.frame has 5 rows (<em>obs.</em>) and 2 columns (<em>variables</em>). 
+the first variable is named <em>num</em> and is of type <em>integer</em>.
+The second variables is named <em>char</em> and is of type <em>factor</em>.</p>
+<p>But wait: We did specify a character vector, why is char a factor? 
+This is because <code>data.frame()</code> has an argument <code>stringsAsFactors</code> that is by default set to <code>TRUE</code> (checkout the help). </p>
+<p>This behaviour is anoying and you can turn if off savely (and coerce to a factor only when you need it):</p>
+<pre><code class="lang-r">df &lt;- data.frame(num = <span class="hljs-number">1</span>:<span class="hljs-number">5</span>, char = c(<span class="hljs-string">&apos;A&apos;</span>, <span class="hljs-string">&apos;A&apos;</span>, <span class="hljs-string">&apos;A&apos;</span>, <span class="hljs-string">&apos;B&apos;</span>, <span class="hljs-string">&apos;B&apos;</span>), stringsAsFactors = <span class="hljs-literal">FALSE</span>)
+str(df)
+</code></pre>
+<pre><code>## &apos;data.frame&apos;:    5 obs. of  2 variables:
+##  $ num : int  1 2 3 4 5
+##  $ char: chr  &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;B&quot; ...
+</code></pre><p>Most data (csv-files, excel sheets) is organized in 2 dimensional fashion and can be read directly into data.frames. See the next chapter [---!!!link here!!!---] how to read external data into R.</p>
+<h3 id="lists">Lists</h3>
+<p>List are the most flexibel datatype in R.
+Elements of  lists can be of any type (unlike vectors and matrices) and of different length (unlike data.frames).</p>
+<p>List ca be create using the <code>list()</code> function.</p>
+<pre><code class="lang-r">l &lt;- list(<span class="hljs-string">&apos;A&apos;</span>, c(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>), df)
+l
+</code></pre>
+<pre><code>## [[1]]
+## [1] &quot;A&quot;
+## 
+## [[2]]
+## [1] 1 3 4
+## 
+## [[3]]
+##   num char
+## 1   1    A
+## 2   2    A
+## 3   3    A
+## 4   4    B
+## 5   5    B
+</code></pre><p>Here I stored as the first element a character vector of lenght one, as second element a numeric vector and as third element a whole data.frame.</p>
+<p>Again <code>str()</code> is useful to understand the structure</p>
+<pre><code class="lang-r">str(l)
+</code></pre>
+<pre><code>## List of 3
+##  $ : chr &quot;A&quot;
+##  $ : num [1:3] 1 3 4
+##  $ :&apos;data.frame&apos;:    5 obs. of  2 variables:
+##   ..$ num : int [1:5] 1 2 3 4 5
+##   ..$ char: chr [1:5] &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;B&quot; ...
+</code></pre><p>It tells us, the object is a list with 4 entries and then gives details of the elements. Note the entry for the last element is identical to the one from above.</p>
 
                     
                     </section>
@@ -608,10 +879,10 @@ This first chapter is only dedicated to make you familiar with basic R programmi
         </div>
 
         
-        <a href="../preface/packages.html" class="navigation navigation-prev " aria-label="Previous page: Install additional packages"><i class="fa fa-angle-left"></i></a>
+        <a href="../rintro/types.html" class="navigation navigation-prev " aria-label="Previous page: Data types"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../rintro/rstudio.html" class="navigation navigation-next " aria-label="Next page: Introduction to RStudio"><i class="fa fa-angle-right"></i></a>
+        <a href="../rintro/read_data.html" class="navigation navigation-next " aria-label="Next page: Reading / Writing data"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

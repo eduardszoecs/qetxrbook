@@ -25,10 +25,10 @@
         
     
     
-    <link rel="next" href="../community/intro.html" />
+    <link rel="next" href="../rintro/gendata.html" />
     
     
-    <link rel="prev" href="../rintro/basic.html" />
+    <link rel="prev" href="../rintro/structures.html" />
     
 
         
@@ -36,7 +36,7 @@
     <body>
         
         
-    <div class="book" data-level="2.4" data-basepath=".." data-revision="Thu Sep 24 2015 10:58:32 GMT+0200 (CEST)">
+    <div class="book" data-level="2.6" data-basepath=".." data-revision="Mon Sep 28 2015 14:28:56 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -178,29 +178,59 @@
             
         </li>
     
-        <li class="chapter " data-level="2.3" data-path="rintro/basic.html">
+        <li class="chapter " data-level="2.3" data-path="rintro/first.html">
             
                 
-                    <a href="../rintro/basic.html">
+                    <a href="../rintro/first.html">
                 
                         <i class="fa fa-check"></i>
                         
                             <b>2.3.</b>
                         
-                        Basic data structures &amp; functions
+                        First steps
                     </a>
             
             
         </li>
     
-        <li class="chapter active" data-level="2.4" data-path="rintro/read_data.html">
+        <li class="chapter " data-level="2.4" data-path="rintro/types.html">
+            
+                
+                    <a href="../rintro/types.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        Data types
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="rintro/structures.html">
+            
+                
+                    <a href="../rintro/structures.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.</b>
+                        
+                        Data structures
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.6" data-path="rintro/read_data.html">
             
                 
                     <a href="../rintro/read_data.html">
                 
                         <i class="fa fa-check"></i>
                         
-                            <b>2.4.</b>
+                            <b>2.6.</b>
                         
                         Reading / Writing data
                     </a>
@@ -208,23 +238,53 @@
             
         </li>
     
-        <li class="chapter " data-level="2.5" data-path="rintro/work.html">
+        <li class="chapter " data-level="2.7" data-path="rintro/gendata.html">
             
-            <span><b>2.5.</b> Working with data</span>
+                
+                    <a href="../rintro/gendata.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.7.</b>
+                        
+                        Generating data
+                    </a>
             
             
         </li>
     
-        <li class="chapter " data-level="2.6" data-path="rintro/regression.html">
+        <li class="chapter " data-level="2.8" data-path="rintro/plot.html">
             
-            <span><b>2.6.</b> Linear regression</span>
+                
+                    <a href="../rintro/plot.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.8.</b>
+                        
+                        Basic Plotting
+                    </a>
             
             
         </li>
     
-        <li class="chapter " data-level="2.7" data-path="rintro/r_resources.html">
+        <li class="chapter " data-level="2.9" data-path="rintro/work.html">
             
-            <span><b>2.7.</b> Other resources</span>
+            <span><b>2.9.</b> Working with data</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10" data-path="rintro/regression.html">
+            
+            <span><b>2.10.</b> Linear regression</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11" data-path="rintro/r_resources.html">
+            
+            <span><b>2.11.</b> Other resources</span>
             
             
         </li>
@@ -562,7 +622,11 @@ Nearly every tool can handle such data.</p>
 <p>So a typical command to load data would be:</p>
 <pre><code class="lang-r">setwd( <span class="hljs-string">&quot;/home/edisz/Documents/Uni/Projects/qetxrbook&quot;</span>)
 df &lt;- read.table(<span class="hljs-string">&apos;data/iris1.csv&apos;</span>, sep = <span class="hljs-string">&apos;;&apos;</span>, header = <span class="hljs-literal">TRUE</span>, stringsAsFactors = <span class="hljs-literal">FALSE</span>)
-str(df)
+</code></pre>
+<p>After reading the data,</p>
+<p>always check if all is correct.
+You can use the <code>str()</code> function for this:</p>
+<pre><code class="lang-r">str(df)
 </code></pre>
 <pre><code>## &apos;data.frame&apos;:    150 obs. of  5 variables:
 ##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
@@ -570,7 +634,14 @@ str(df)
 ##  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
 ##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
 ##  $ Species     : chr  &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; ...
-</code></pre><h3 id="writing-text-files">Writing text files</h3>
+</code></pre><p>Look at:</p>
+<ul>
+<li>correct number of rows (=obs.)</li>
+<li>correct number of columns (=variables)</li>
+<li>correct type of columns. Sometimes variable that should be numeric are recorded as factors. This is an indication that there is at least some non-numeric data in this column - check.</li>
+<li>correct column names</li>
+</ul>
+<h3 id="writing-text-files">Writing text files</h3>
 <p>Writing text files is done via <code>write.table</code>. It has a similar set of attributes as above. 
 However, to others should be mentioned:</p>
 <ul>
@@ -623,10 +694,10 @@ The data should have the same structure as above.
         </div>
 
         
-        <a href="../rintro/basic.html" class="navigation navigation-prev " aria-label="Previous page: Basic data structures &amp; functions"><i class="fa fa-angle-left"></i></a>
+        <a href="../rintro/structures.html" class="navigation navigation-prev " aria-label="Previous page: Data structures"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../community/intro.html" class="navigation navigation-next " aria-label="Next page: Community Ecotoxicology"><i class="fa fa-angle-right"></i></a>
+        <a href="../rintro/gendata.html" class="navigation navigation-next " aria-label="Next page: Generating data"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
