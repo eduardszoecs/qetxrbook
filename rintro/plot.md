@@ -3,8 +3,8 @@
 ## Basic Plotting
 
 In this chapter we will explore the basic (but powerful) plotting capabilities of R. 
-I later chapters I will also use the plotting system of ggplot [---!!!link!!!---]. 
-However, I refer readers to [---!!!link source!!!---] for an introdution to ggplot.
+I later chapters I will also use the plotting system of [ggplot2](https://cran.r-project.org/web/packages/ggplot2/index.html). 
+However, I refer readers to the [R Graphics Cookbook](http://www.cookbook-r.com/Graphs/) for an introdution to ggplot or the upcoming new edition of the [ggplot2-book](https://github.com/hadley/ggplot2-book).
 
 
 ### Plotting the distribution of a variable
