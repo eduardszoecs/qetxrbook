@@ -44,6 +44,15 @@ So a typical command to load data would be:
 ```r
 setwd( "/home/edisz/Documents/Uni/Projects/qetxrbook")
 df <- read.table('data/iris1.csv', sep = ';', header = TRUE, stringsAsFactors = FALSE)
+```
+
+After reading the data,
+
+always check if all is correct.
+You can use the `str()` function for this:
+
+
+```r
 str(df)
 ```
 
@@ -55,6 +64,13 @@ str(df)
 ##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
 ##  $ Species     : chr  "setosa" "setosa" "setosa" "setosa" ...
 ```
+
+Look at:
+
+* correct number of rows (=obs.)
+* correct number of columns (=variables)
+* correct type of columns. Sometimes variable that should be numeric are recorded as factors. This is an indication that there is at least some non-numeric data in this column - check.
+* correct column names
 
 
 ### Writing text files
