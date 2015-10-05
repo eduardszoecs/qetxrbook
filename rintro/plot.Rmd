@@ -229,7 +229,7 @@ df_fac <- data.frame(y_num = c(rnorm(10), rnorm(10, 3)),
                      y_fac = rep(c('A', 'B'), each = 10))
 ```
 
-```{r}
+```{r boxplot1}
 plot(y_num ~ y_fac, data = df_fac)
 ```
 

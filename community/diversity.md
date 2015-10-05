@@ -1,3 +1,7 @@
 
 
+
+
 ## Diversity measures
+
+Calculating 

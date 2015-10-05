@@ -1,6 +1,6 @@
 
 
-S
+
 ## Data structures in R
 ### Vectors
 
