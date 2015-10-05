@@ -17,6 +17,9 @@
     * [Working with data](rintro/work.md)
     * [Linear regression](rintro/regression.md)
     * [Other resources](rintro/r_resources.md)
+    
+* [Non-linear Models](nls/intro.md)
+    * [Bioaccumulation](nls/bioacc.md)
 
 * [Dose-Response Models](dose_response/intro.md)
     * [LC50](dose_response/lc50.md)
