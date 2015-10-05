@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Reading / Writing data | Quantitative Ecotoxicology with R</title>
+        <title>Working with data | Quantitative Ecotoxicology with R</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.3.0">
@@ -25,10 +25,10 @@
         
     
     
-    <link rel="next" href="../rintro/gendata.html" />
+    <link rel="next" href="../community/intro.html" />
     
     
-    <link rel="prev" href="../rintro/structures.html" />
+    <link rel="prev" href="../rintro/plot.html" />
     
 
         
@@ -36,7 +36,7 @@
     <body>
         
         
-    <div class="book" data-level="2.6" data-basepath=".." data-revision="Mon Oct 05 2015 10:48:31 GMT+0200 (CEST)">
+    <div class="book" data-level="2.9" data-basepath=".." data-revision="Mon Oct 05 2015 10:48:31 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -223,7 +223,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.6" data-path="rintro/read_data.html">
+        <li class="chapter " data-level="2.6" data-path="rintro/read_data.html">
             
                 
                     <a href="../rintro/read_data.html">
@@ -268,7 +268,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.9" data-path="rintro/work.html">
+        <li class="chapter active" data-level="2.9" data-path="rintro/work.html">
             
                 
                     <a href="../rintro/work.html">
@@ -629,96 +629,14 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h2 id="reading-data-into-r">Reading data into R</h2>
-<h3 id="reading-text-files">Reading text files</h3>
-<p>One of the easiest ways to store data is to use text files (or comma separated files <code>.csv</code>). 
-Nearly every tool can handle such data.</p>
-<p>To read such data into R we use the function <code>read.table</code>.</p>
-<p><code>read.table</code> has a lot of arguments to control it&apos;s functionality:</p>
-<pre><code class="lang-r">read.table(file, header = <span class="hljs-literal">FALSE</span>, sep = <span class="hljs-string">&quot;&quot;</span>, quote = <span class="hljs-string">&quot;\&quot;&apos;&quot;</span>,
-           dec = <span class="hljs-string">&quot;.&quot;</span>, numerals = c(<span class="hljs-string">&quot;allow.loss&quot;</span>, <span class="hljs-string">&quot;warn.loss&quot;</span>, <span class="hljs-string">&quot;no.loss&quot;</span>),
-           row.names, col.names, as.is = !stringsAsFactors,
-           na.strings = <span class="hljs-string">&quot;NA&quot;</span>, colClasses = <span class="hljs-literal">NA</span>, nrows = -<span class="hljs-number">1</span>,
-           skip = <span class="hljs-number">0</span>, check.names = <span class="hljs-literal">TRUE</span>, fill = !blank.lines.skip,
-           strip.white = <span class="hljs-literal">FALSE</span>, blank.lines.skip = <span class="hljs-literal">TRUE</span>,
-           comment.char = <span class="hljs-string">&quot;#&quot;</span>,
-           allowEscapes = <span class="hljs-literal">FALSE</span>, flush = <span class="hljs-literal">FALSE</span>,
-           stringsAsFactors = default.stringsAsFactors(),
-           fileEncoding = <span class="hljs-string">&quot;&quot;</span>, encoding = <span class="hljs-string">&quot;unknown&quot;</span>, text, skipNul = <span class="hljs-literal">FALSE</span>)
-</code></pre>
-<p>The most useful ones are:</p>
+                        <h2 id="working-with-data">Working with data</h2>
+<p>In the previous chapters we learn about</p>
 <ul>
-<li><code>file</code> : character, the path to the file (either absolute or relative to the working directory [<code>#! need link here</code>])</li>
-<li><code>header</code> : logical (either <code>TRUE</code> or <code>FALSE</code>). Does the file include column names in the first row?</li>
-<li><code>sep</code> : columns can be separated in text files by different characters (e.g. <code>,</code> or <code>;</code> or <code>|</code>)</li>
-<li><code>dec</code> : the decimal separator. Default is <code>.</code>, but in some countries (like Germany) this can also be <code>,</code></li>
-<li><code>stringsAsFactors</code> : Should be strings interpreted as factors? It tend to use <code>stringsAsFactors = FALSE</code> (default is <code>TRUE</code>) and convert only if needed.</li>
+<li>data types and structures,</li>
+<li>how to read data into R</li>
+<li>and how to plot data</li>
 </ul>
-<p>So a typical command to load data would be:</p>
-<pre><code class="lang-r">setwd( <span class="hljs-string">&quot;/home/edisz/Documents/Uni/Projects/qetxrbook&quot;</span>)
-df &lt;- read.table(<span class="hljs-string">&apos;data/iris1.csv&apos;</span>, sep = <span class="hljs-string">&apos;;&apos;</span>, header = <span class="hljs-literal">TRUE</span>, stringsAsFactors = <span class="hljs-literal">FALSE</span>)
-</code></pre>
-<p>After reading the data,</p>
-<p>always check if all is correct.
-You can use the <code>str()</code> function for this:</p>
-<pre><code class="lang-r">str(df)
-</code></pre>
-<pre><code>## &apos;data.frame&apos;:    150 obs. of  5 variables:
-##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
-##  $ Sepal.Width : num  3.5 3 3.2 NA 3.6 3.9 3.4 3.4 2.9 3.1 ...
-##  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
-##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
-##  $ Species     : chr  &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; ...
-</code></pre><p>Look at:</p>
-<ul>
-<li>correct number of rows (=obs.)</li>
-<li>correct number of columns (=variables)</li>
-<li>correct type of columns. Sometimes variable that should be numeric are recorded as factors. This is an indication that there is at least some non-numeric data in this column - check.</li>
-<li>correct column names</li>
-</ul>
-<h3 id="writing-text-files">Writing text files</h3>
-<p>Writing text files is done via <code>write.table</code>. It has a similar set of attributes as above. 
-However, to others should be mentioned:</p>
-<ul>
-<li><code>append</code> : If <code>TRUE</code> the data is appended to the file. Otherwise, the existing file is overwritten.</li>
-<li><code>row.names</code> : Is always use <code>row.names=FALSE</code>, because row-names should not contain information and the columns are better aligned.</li>
-</ul>
-<p>So to write the above data.frame to a file use:</p>
-<pre><code class="lang-r">write.table(df, <span class="hljs-string">&quot;/home/edisz/mytable.csv&quot;</span>, sep = <span class="hljs-string">&apos;;&apos;</span>, row.names = <span class="hljs-literal">FALSE</span>)
-</code></pre>
-<h3 id="excel-files">Excel files</h3>
-<p>Eventually you will have to work with Microsoft Excel files.
-Excel file are <a href="http://www.win-vector.com/blog/2012/12/please-stop-using-Excel-like-formats-to-exchange-data/" target="_blank">not a good format</a> to store data and have been hard to read into R.</p>
-<p>Luckily, there is now the <a href="https://cran.r-project.org/web/packages/readxl/index.html" target="_blank"><code>readxl</code></a> package available on CRAN to make this easier. </p>
-<h3 id="other-files">Other files</h3>
-<p>R can also read a lot of other formats (SPSS, GIS-data, ...), however you&apos;ll certainly need additional packages. Just <a href="help.html">search</a> for it on the internet.</p>
-<h3 id="databases">Databases</h3>
-<p>R can connect to all major databases like <a href="https://cran.r-project.org/web/packages/RMySQL/index.html" target="_blank">MySQL</a>, <a href="https://cran.r-project.org/web/packages/RPostgreSQL/index.html" target="_blank">PostgreSQL</a> or <a href="https://cran.r-project.org/web/packages/RSQLite/index.html" target="_blank">SQLite</a>.</p>
-<p>The usage is similar for all:</p>
-<ol>
-<li>Connect to the database</li>
-</ol>
-<pre><code class="lang-r">drv &lt;- dbDriver(<span class="hljs-string">&quot;PostgreSQL&quot;</span>)
-con &lt;- dbConnect(drv, dbname = DBname, user = DBuser, host = DBhost, port = DBport)
-</code></pre>
-<p>where <code>DBname</code>, <code>DBuser</code>, <code>DBhost</code> and <code>DBport</code> are characters specifying the details of the connection.</p>
-<ol>
-<li>Query the data you need:</li>
-</ol>
-<pre><code class="lang-r">df &lt;- dbGetQuery(con, <span class="hljs-string">&apos;SELECT * FROM public.df&apos;</span>)
-</code></pre>
-<ol>
-<li>Close the connection when finished:</li>
-</ol>
-<pre><code class="lang-r">dbDisconnect(con)
-dbUnloadDriver(drv)
-</code></pre>
-<h3 id="exercises">Exercises</h3>
-<p>There are 3 additional data files in the data-directory (<code>iris2.csv</code>, <code>iris3.csv</code> and <code>iris4.csv</code>). Each of this files has different &apos;<em>problems</em>&apos;.</p>
-<p>Read each into R using <code>read.table()</code> and specify appropriate arguments. 
-It may be helpful to take a look at the files using a text-editor. 
-The data should have the same structure as above.
-(Hint: read the help for read.table carefully).</p>
+<p>This chapter will be more exciting, as we will deal with real data.</p>
 
                     
                     </section>
@@ -729,10 +647,10 @@ The data should have the same structure as above.
         </div>
 
         
-        <a href="../rintro/structures.html" class="navigation navigation-prev " aria-label="Previous page: Data structures"><i class="fa fa-angle-left"></i></a>
+        <a href="../rintro/plot.html" class="navigation navigation-prev " aria-label="Previous page: Basic Plotting"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../rintro/gendata.html" class="navigation navigation-next " aria-label="Next page: Generating data"><i class="fa fa-angle-right"></i></a>
+        <a href="../community/intro.html" class="navigation navigation-next " aria-label="Next page: Community Ecotoxicology"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
