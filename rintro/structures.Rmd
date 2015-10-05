@@ -2,7 +2,7 @@
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-S
+
 ## Data structures in R
 ### Vectors
 

@@ -32,6 +32,7 @@
 * [Hypothesis testing](hypotheses/intro.md)
     * [NOEC](hypotheses/noec.md)
     * [GLM](hypotheses/glm.md)
+    * [Non-parametric testing](hypotheses/nonparametric.md)
 
 * [Community Ecotoxicology](community/intro.md)
     * [Diversity measures](community/diversity.md)

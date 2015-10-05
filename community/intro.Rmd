@@ -2,7 +2,6 @@
 knitr::opts_chunk$set(echo = TRUE)
 require(knitcitations)
 bib <- read.bibtex('/home/edisz/Documents/Uni/Projects/qetxrbook/references.bib')
-#! status : finished first draft
 ```
 
 ## Community Ecotoxicology
@@ -18,36 +17,32 @@ As ecotoxicologists we might also to test whole communities with their biotic in
 
 
 ### The data used in this chapter
+
 We will analyse the pyrifos data set of `r citep(bib["van_den_brink_principal_1999"])` 
 which is shipped with the vegan package. 
 This is a classical multivariate dataset as commonly produced in mesocosm experiments.
 
 Twelve experimental ditches were used in this experiment: 
-Four ditches served as control and the remaining eight were treated in duplicates 
-once with in the insecticide chlorpyrifos at doses of 0.1, 0.9, 6 and 44 ug / L. 
+Four ditches served as control and the remaining eight were treated in duplicates once with the insecticide chlorpyrifos at doses of 0.1, 0.9, 6 and 44 ug / L. 
 Invertebrates were sampled 11 times from week -4 pre-treatment through week 24 post-treatment. 
-A total of 178 taxa were identified, this resulted in a table  of 132 rows 
-(11 * 12 samples) and 178 columns (taxa).
+A total of 178 taxa were identified, this resulted in a table of 132 rows (11 * 12 samples) and 178 columns (taxa).
 
+The dataset can be found in the `data` folder:
 ```{r load_pyrifos, message=FALSE}
-require(vegan)
-data(pyrifos)
-head(pyrifos[, c(1:11)])
+pyrifos <- read.table('data/pyrifos.csv', 
+                      header = TRUE, sep = ';')
 ```
 
-
-Rows correspond to samples and columns are the species (with abbreviated names) - a *species x sites* matrix as commonly used in community ecology.
-
-The row-names code treatment and time, but we will create a separate data.frame with variables providing information on the experimental ditch, sampling time and treatment: 
-
-
-```{r envdata}
-week <- gl(11, 12, labels = c(-4, -1, 0.1, 1, 2, 4, 8, 12, 15, 19, 24))
-dose <- factor(rep(c(0.1, 0, 0, 0.9, 0, 44, 6, 0.1, 44, 0.9, 0, 6), 11))
-ditch <- gl(12, 1, length=132)
-env <- data.frame(week, dose, ditch)
-head(env)
+And check if this has worked as expected:
+```{r results=FALSE}
+str(pyrifos)
+head(pyrifos)
 ```
+
+In this dataset row correspond to samples and the first three columns are identifiers of the sample (`week`, `dose` and `ditch`).
+
+The rest of the columns are the species (with abbreviated names). 
+This is a *species x sites* matrix as commonly used in community ecology.
 
 Let's have a first look at the abundance of some taxa during the experiment.
 The code here is more lengthy and you don't need to fully understand it.
@@ -55,6 +50,7 @@ The code subsets and prepares the data and then shows a plot with time on x-axis
 abundance on y-axis and dose as color for each species.
 
 
+[---!!!bettergivedatahere!!!---]
 
 ```{r pyrifos_raw_plot, message=FALSE}
 # subset species
